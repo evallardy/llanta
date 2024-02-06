@@ -83,13 +83,16 @@ def mensaje(request):
 
     datos=request.data
 
-    bitacora = Bitacora(descripcion = 'Termina Json')
+    bitacora = Bitacora(descripcion = 'datos ok')
     bitacora.save()
 
-    # bitacora = Bitacora(descripcion = request.data)
-    # bitacora.save()
+    numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
+    mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
 
-    bitacora = Bitacora(descripcion = datos['entry'][0])
+    bitacora = Bitacora(descripcion = numero)
+    bitacora.save()
+
+    bitacora = Bitacora(descripcion = mensaje)
     bitacora.save()
 
 
