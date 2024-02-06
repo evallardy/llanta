@@ -70,7 +70,7 @@ def mensaje(request):
         else:
             return 'Error de autenticación'
     datos = request.data
-    if datos['number'] and datos['message-in'] and datos['message_in_raw'] \
+    if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
         and datos['application'] and datos['type']:
         numero = datos['number']
         message_in = datos['message-in']
