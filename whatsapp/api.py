@@ -65,9 +65,6 @@ def mensaje(request):
 #    bitacora = Bitacora(descripcion = request)
 #    bitacora.save()
 
-    bitacora = Bitacora(descripcion = 'Empieza')
-    bitacora.save()
-
     if request.method == 'GET':
         verify_token = request.GET.get('hub.verify_token', None)
         hub_challenge = request.GET.get('hub.challenge', '')
@@ -78,26 +75,8 @@ def mensaje(request):
             return HttpResponse('Error de autenticación')
             return 'Error de autenticación'
 
-    bitacora = Bitacora(descripcion = 'Termina if')
-    bitacora.save()
-
     datos=request.data
 
-    bitacora = Bitacora(descripcion = 'datos ok')
-    bitacora.save()
-
-    numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
-    mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-
-    bitacora = Bitacora(descripcion = numero)
-    bitacora.save()
-
-    bitacora = Bitacora(descripcion = mensaje)
-    bitacora.save()
-
-
-    # if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
-    #    and datos['application'] and datos['type']:
     if datos:
 
         # numero = datos['number']
@@ -107,8 +86,9 @@ def mensaje(request):
         # tipo = datos['type']
         # opcion_seleccionada = message_in_raw
 
-        numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']
+        numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
         mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+
         opcion_seleccionada = mensaje
 
         # Busca comunicacion
