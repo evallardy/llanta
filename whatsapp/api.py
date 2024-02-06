@@ -64,7 +64,6 @@ def mensaje(request):
 #    bitacora = Bitacora(descripcion = request)
 #    bitacora.save()
 
-    datos = request.hub
     bitacora = Bitacora(descripcion = 'OK 1')
     bitacora.save()
 
