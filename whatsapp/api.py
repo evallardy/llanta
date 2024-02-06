@@ -378,7 +378,7 @@ def creaMenu(objeto):
 def mensajeError(numeroTelefono):
     mensaje = 'Faltan datos'
     respuesta = {'Error':mensaje}
-    bitacora = Bitacora(descripcion = "Celular:" + numeroTelefono + "/" + mensaje)
+    bitacora = Bitacora(descripcion = "Celular:" + 'RRR' + "/" + mensaje)
     bitacora.save()
     return respuesta
 
