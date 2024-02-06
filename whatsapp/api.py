@@ -66,7 +66,7 @@ def mensaje(request):
 
     datos = request.hub
 
-    bitacora = Bitacora(descripcion = request)
+    bitacora = Bitacora(descripcion = datos)
     bitacora.save()
 
     if request.method == 'GET' and datos:
