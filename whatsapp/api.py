@@ -97,10 +97,13 @@ def mensaje(request):
 
         opcion_seleccionada = mensaje
 
+        bitacora = Bitacora(descripcion = "opcion ok")
+        bitacora.save()
+
         # Busca comunicacion
         comunicacion = MensajePicky.objects.filter(number=numero,estatus_mensaje=1).last()
 
-        bitacora = Bitacora(descripcion = "Comunicacion")
+        bitacora = Bitacora(descripcion = "Comunicacion ok")
         bitacora.save()
 
         message = ""
