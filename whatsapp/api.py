@@ -80,6 +80,10 @@ def mensaje(request):
     
     datos=request.get_json()
 
+    bitacora = Bitacora(descripcion = datos)
+    bitacora.save()
+
+
     # if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
     #    and datos['application'] and datos['type']:
     if datos:
