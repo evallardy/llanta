@@ -64,7 +64,7 @@ def mensaje(request):
     #    bitacora = bitacora(descripcion = json.dumps(request.data)[0:254])
     #    bitacora.save()
 
-    print(request.args.get('hub.verify_token'))
+    print(request)
 
     if request.method == 'GET' and request.data:
         if request.args.get('hub.verify_token') == 'HolaKike':
