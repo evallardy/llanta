@@ -61,17 +61,16 @@ def registra_asesor(comunicacion):
 @api_view(['POST','GET'])
 def mensaje(request):
     # Guardado de la información que llega tanto el meodo como la información
-    #    bitacora = bitacora(descripcion = json.dumps(request.data)[0:254])
-    #    bitacora.save()
+    bitacora = bitacora(descripcion = json.dumps(request.data)[0:254])
+    bitacora.save()
 
-    print(request)
+    datos = request.data
 
     if request.method == 'GET' and request.data:
-        if request.args.get('hub.verify_token') == 'HolaKike':
-            return request.args.get('hub.challenge')
+        if request.args.get('datos.verify_token') == 'HolaKike':
+            return request.args.get('datos.challenge')
         else:
             return 'Error de autenticación'
-    datos = request.data
     if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
         and datos['application'] and datos['type']:
         numero = datos['number']
