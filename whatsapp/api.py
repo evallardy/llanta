@@ -77,15 +77,24 @@ def mensaje(request):
         else:
             return HttpResponse('Error de autenticación')
             return 'Error de autenticación'
+    
     datos=request.get_json()
-    if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
-        and datos['application'] and datos['type']:
-        numero = datos['number']
-        message_in = datos['message-in']
-        message_in_raw = datos['message_in_raw']
-        application = datos['application']
-        tipo = datos['type']
-        opcion_seleccionada = message_in_raw
+
+    # if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
+    #    and datos['application'] and datos['type']:
+    if datos:
+
+        # numero = datos['number']
+        # message_in = datos['message-in']
+        # message_in_raw = datos['message_in_raw']
+        # application = datos['application']
+        # tipo = datos['type']
+        # opcion_seleccionada = message_in_raw
+
+        numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']
+        mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+        opcion_seleccionada = mensaje
+
         # Busca comunicacion
         comunicacion = MensajePicky.objects.filter(number=numero,estatus_mensaje=1).last()
         message = ""
@@ -167,28 +176,35 @@ def mensaje(request):
             message = creaMenu(json.dumps(menu_json))
             
             # Guarda la peticion la primera vez con su primer menu
+            # comunicacion = MensajePicky(
+            #     number = numero,
+            #     message_in = message_in,
+            #     message_in_raw = message_in_raw,
+            #     application = application,
+            #     tipo = tipo,
+            #     nivel=1,
+            #     opcion1 = menu_json,
+            # )
             comunicacion = MensajePicky(
                 number = numero,
-                message_in = message_in,
-                message_in_raw = message_in_raw,
-                application = application,
-                tipo = tipo,
+                message_in = mensaje,
+                message_in_raw = mensaje,
                 nivel=1,
                 opcion1 = menu_json,
             )
             comunicacion.save()
         # Se envia repuesta 
-        respuesta = {"number":numero,"application":application,"message":message,"type":tipo, "message-out":message,"delay":"0"}
-        return Response(respuesta)
+        # respuesta = {"number":numero,"application":application,"message":message,"type":tipo, "message-out":message,"delay":"0"}
+        respuesta = {"number":numero,"message":message, "message-out":message,"delay":"0"}
+        # return Response(respuesta)
+        return jsonify({"status": "success"}, 200)
     else:
         # Se envia el mensaje de error, no envian nada
-        if datos and datos['number']:
-#            bitacora = Bitacora(descripcion = json.dumps(request.args)[0:254])
-#            bitacora.save()
-            respuesta = mensajeError(datos['number'])
-        else:
-            respuesta = mensajeError(request)
-        return Response(respuesta)
+        bitacora = Bitacora("Faltan datos")
+        bitacora.save()
+        # return Response(respuesta)
+        return jsonify({"status": ""}, 400)
+
 #    else:
 #        # Se envia el mensaje de error, no envian nada
 #        respuesta = mensajeError("Sin número")
