@@ -70,20 +70,10 @@ def mensaje(request):
     if request.method == 'GET':
         verify_token = request.GET.get('hub.verify_token', None)
         hub_challenge = request.GET.get('hub.challenge', '')
-        bitacora = Bitacora(descripcion = verify_token)
-        bitacora.save()
-        bitacora = Bitacora(descripcion = hub_challenge)
-        bitacora.save()
         if verify_token == 'HolaKike':
-            bitacora = Bitacora(descripcion = 'HolaKike')
-            bitacora.save()
             return request.GET.get('hub.challenge', '')
         else:
-            bitacora = Bitacora(descripcion = 'Else')
-            bitacora.save()
             return 'Error de autenticación'
-    bitacora = Bitacora(descripcion = 'No entró')
-    bitacora.save()
     if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
         and datos['application'] and datos['type']:
         numero = datos['number']
