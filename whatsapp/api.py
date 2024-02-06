@@ -179,7 +179,7 @@ def mensaje(request):
         if datos and datos['number']:
             respuesta = mensajeError(datos['number'])
         else:
-            respuesta = mensajeError("Faltan datos")
+            respuesta = mensajeError(request)
         return Response(respuesta)
 #    else:
 #        # Se envia el mensaje de error, no envian nada
