@@ -61,7 +61,7 @@ def registra_asesor(comunicacion):
 @api_view(['POST','GET'])
 def mensaje(request):
     # Guardado de la información que llega tanto el meodo como la información
-    bitacora = Bitacora(descripcion = json.dumps(request.data)[0:254])
+    bitacora = Bitacora(descripcion = json.dumps(request.args.get('hub')[0:254]))
     bitacora.save()
 
     datos = request.data
@@ -176,8 +176,8 @@ def mensaje(request):
     else:
         # Se envia el mensaje de error, no envian nada
         if datos and datos['number']:
-            bitacora = Bitacora(descripcion = json.dumps(request.args)[0:254])
-            bitacora.save()
+#            bitacora = Bitacora(descripcion = json.dumps(request.args)[0:254])
+#            bitacora.save()
             respuesta = mensajeError(datos['number'])
         else:
             respuesta = mensajeError(request)
