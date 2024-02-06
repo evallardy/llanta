@@ -70,49 +70,18 @@ def mensaje(request):
         hub_challenge = request.GET.get('hub.challenge', '')
         if verify_token == 'HolaKike':
             return HttpResponse(hub_challenge)
-            return request.GET.get('hub.challenge', '')
         else:
             return HttpResponse('Error de autenticación')
-            return 'Error de autenticación'
-
     datos=request.data
-
     numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
     mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-
-    bitacora = Bitacora(descripcion = "Entre")
-    bitacora.save()
-
     if numero:
-
-        bitacora = Bitacora(descripcion = "Valido")
-        bitacora.save()
-
-        # numero = datos['number']
-        # message_in = datos['message-in']
-        # message_in_raw = datos['message_in_raw']
-        # application = datos['application']
-        # tipo = datos['type']
-        # opcion_seleccionada = message_in_raw
-
         opcion_seleccionada = mensaje
-
-        bitacora = Bitacora(descripcion = "opcion ok")
-        bitacora.save()
-
         # Busca comunicacion
         comunicacion = MensajePicky.objects.filter(number=numero,estatus_mensaje=1).last()
-
-        bitacora = Bitacora(descripcion = "Comunicacion ok")
-        bitacora.save()
-
         message = ""
         respuesta = ""
         if comunicacion:
-
-            bitacora = Bitacora(descripcion = "Entra comunicacion")
-            bitacora.save()
-
             # quitar espacion en la cadena del mensaje
             opcion_sel = opcion_seleccionada.upper().replace(" ", "")
             nivel = comunicacion.nivel
@@ -189,15 +158,6 @@ def mensaje(request):
             message = creaMenu(json.dumps(menu_json))
             
             # Guarda la peticion la primera vez con su primer menu
-            # comunicacion = MensajePicky(
-            #     number = numero,
-            #     message_in = message_in,
-            #     message_in_raw = message_in_raw,
-            #     application = application,
-            #     tipo = tipo,
-            #     nivel=1,
-            #     opcion1 = menu_json,
-            # )
             comunicacion = MensajePicky(
                 number = numero,
                 message_in = mensaje,
