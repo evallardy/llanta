@@ -176,6 +176,8 @@ def mensaje(request):
     else:
         # Se envia el mensaje de error, no envian nada
         if datos and datos['number']:
+            bitacora = Bitacora(descripcion = json.dumps(request)[0:254])
+            bitacora.save()
             respuesta = mensajeError(datos['number'])
         else:
             respuesta = mensajeError(request)
