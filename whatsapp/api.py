@@ -70,9 +70,9 @@ def mensaje(request):
     if request.method == 'GET':
         verify_token = request.GET.get('hub.verify_token', None)
         hub_challenge = request.GET.get('hub.challenge', '')
-        bitacora = Bitacora(descripcion = 'verify_token')
+        bitacora = Bitacora(descripcion = verify_token)
         bitacora.save()
-        bitacora = Bitacora(descripcion = 'hub_challenge')
+        bitacora = Bitacora(descripcion = hub_challenge)
         bitacora.save()
         if verify_token == 'HolaKike':
             bitacora = Bitacora(descripcion = 'HolaKike')
