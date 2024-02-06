@@ -64,10 +64,10 @@ def mensaje(request):
 #    bitacora = Bitacora(descripcion = request)
 #    bitacora.save()
 
-    bitacora = Bitacora(descripcion = 'OK')
+    bitacora = Bitacora(descripcion = ' ')
     bitacora.save()
 
-    if request.method == 'GET' and datos:
+    if request.method == 'GET':
         verify_token = request.GET.get('hub.verify_token', None)
         hub_challenge = request.GET.get('hub.challenge', '')
         bitacora = Bitacora(descripcion = 'verify_token')
