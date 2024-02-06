@@ -77,7 +77,16 @@ def mensaje(request):
 
     datos=request.data
 
-    if datos:
+    numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
+    mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+
+    bitacora = Bitacora(descripcion = "Entre")
+    bitacora.save()
+
+    if numero:
+
+        bitacora = Bitacora(descripcion = "Valido")
+        bitacora.save()
 
         # numero = datos['number']
         # message_in = datos['message-in']
@@ -86,16 +95,21 @@ def mensaje(request):
         # tipo = datos['type']
         # opcion_seleccionada = message_in_raw
 
-        numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
-        mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-
         opcion_seleccionada = mensaje
 
         # Busca comunicacion
         comunicacion = MensajePicky.objects.filter(number=numero,estatus_mensaje=1).last()
+
+        bitacora = Bitacora(descripcion = "Comunicacion")
+        bitacora.save()
+
         message = ""
         respuesta = ""
         if comunicacion:
+
+            bitacora = Bitacora(descripcion = "Entra comunicacion")
+            bitacora.save()
+
             # quitar espacion en la cadena del mensaje
             opcion_sel = opcion_seleccionada.upper().replace(" ", "")
             nivel = comunicacion.nivel
