@@ -77,7 +77,10 @@ def mensaje(request):
         else:
             return HttpResponse('Error de autenticación')
             return 'Error de autenticación'
-    
+
+    bitacora = Bitacora(descripcion = 'Termina if')
+    bitacora.save()
+
     datos=request.get_json()
 
     bitacora = Bitacora(descripcion = datos)
