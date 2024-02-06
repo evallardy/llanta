@@ -64,9 +64,12 @@ def mensaje(request):
     bitacora = Bitacora(descripcion = request)
     bitacora.save()
 
-    datos = request.data
+    datos = request.hub
 
-    if request.method == 'GET' and request.data:
+    bitacora = Bitacora(descripcion = request)
+    bitacora.save()
+
+    if request.method == 'GET' and datos:
         if request.args.get('datos.verify_token') == 'HolaKike':
             return request.args.get('datos.challenge')
         else:
