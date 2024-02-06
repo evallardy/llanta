@@ -86,8 +86,8 @@ def mensaje(request):
     bitacora = Bitacora(descripcion = 'Termina Json')
     bitacora.save()
 
-    bitacora = Bitacora(descripcion = request.data)
-    bitacora.save()
+    # bitacora = Bitacora(descripcion = request.data)
+    # bitacora.save()
 
     bitacora = Bitacora(descripcion = datos['messages'])
     bitacora.save()
