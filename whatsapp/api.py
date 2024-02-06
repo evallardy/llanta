@@ -66,7 +66,7 @@ def mensaje(request):
 
     datos = request.hub
 
-    verify_token = request.GET.get('hub.verify_token', None)
+    verify_token = request.get('hub.verify_token', None)
 
     bitacora = Bitacora(descripcion = verify_token)
     bitacora.save()
