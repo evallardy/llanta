@@ -64,20 +64,14 @@ def mensaje(request):
 #    bitacora = Bitacora(descripcion = request)
 #    bitacora.save()
 
-    bitacora = Bitacora(descripcion = 'OK 1')
-    bitacora.save()
-
-    verify_token = request.GET.get('hub.verify_token', None)
-
-    bitacora = Bitacora(descripcion = verify_token)
-    bitacora.save()
-
-    bitacora = Bitacora(descripcion = 'OK 2')
+    bitacora = Bitacora(descripcion = 'OK')
     bitacora.save()
 
     if request.method == 'GET' and datos:
-        if request.args.get('datos.verify_token') == 'HolaKike':
-            return request.args.get('datos.challenge')
+        verify_token = request.GET.get('hub.verify_token', None)
+        hub_challenge = request.GET.get('hub.challenge', '')
+        if verify_token == 'HolaKike':
+            return hub_challenge
         else:
             return 'Error de autenticación'
     if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
