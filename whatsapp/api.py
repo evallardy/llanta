@@ -1,4 +1,5 @@
 from rest_framework.response import Response
+from django.http.response import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
@@ -71,9 +72,12 @@ def mensaje(request):
         verify_token = request.GET.get('hub.verify_token', None)
         hub_challenge = request.GET.get('hub.challenge', '')
         if verify_token == 'HolaKike':
+            return HttpResponse(hub_challenge)
             return request.GET.get('hub.challenge', '')
         else:
+            return HttpResponse('Error de autenticación')
             return 'Error de autenticación'
+    datos=request.get_json()
     if datos and datos['number'] and datos['message-in'] and datos['message_in_raw'] \
         and datos['application'] and datos['type']:
         numero = datos['number']
