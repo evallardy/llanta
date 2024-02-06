@@ -61,7 +61,7 @@ def registra_asesor(comunicacion):
 @api_view(['POST','GET'])
 def mensaje(request):
     # Guardado de la información que llega tanto el meodo como la información
-    bitacora = bitacora(descripcion = json.dumps(request.data)[0:254])
+    bitacora = Bitcora(descripcion = json.dumps(request.data)[0:254])
     bitacora.save()
 
     datos = request.data
