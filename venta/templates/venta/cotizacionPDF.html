@@ -1,0 +1,48 @@
+<!-- templates/remision_formato.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización</title>
+    <style>
+        /* Agrega tu CSS de estilo aquí */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .remision-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .producto {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="remision-header">
+        <h1>Cotización: {{ numero_cotizacion }}</h1>
+        <p>Fecha: {{ fecha_entrega|date:"Y-m-d" }}</p>
+        <p>Vigencia: {{ vigencia|date:"Y-m-d" }}</p>
+        <p>Cliente: {{ cliente }}</p>
+        
+    </div>
+
+    <div class="productos">
+        <div class="producto">
+            <label for="">Opción de compra</label>
+            {{ producto_clave }} - {{ descripcion }} <br>
+            <label for="">Existencia</label>
+            Existencia: {{ existencia }} <br>
+            <label for="">Precio</label>
+            {{ precio }} <br>
+            <label for="">Cantidad cotizada</label>
+            {{ solicita }} <br>
+            <label for="">Importe total</label>
+            {{ total }} <br>
+        </div>
+    </div>
+</body>
+</html>

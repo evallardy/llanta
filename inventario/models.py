@@ -21,6 +21,7 @@ class Llanta(models.Model, PermissionRequiredMixin):
 
     class Meta:
         verbose_name = 'Llanta' 
-        verbose_name_plural = 'Llantas' 
+        verbose_name_plural = 'Llantas'
         ordering = ['producto_clave']
+        unique_together = [['producto_clave']]
         db_table = 'Llanta'

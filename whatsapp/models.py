@@ -23,6 +23,10 @@ class MensajePicky(models.Model, PermissionRequiredMixin):
     opcion3 = models.JSONField("Alto", null=True, blank=True)
     opcion4 = models.JSONField("Rin", null=True, blank=True)
     opcion5 = models.JSONField("Opciones", null=True, blank=True)
+    opcion6 = models.JSONField("Llantas", null=True, blank=True)
+    opcion7 = models.JSONField("Envio", null=True, blank=True)
+    opcion8 = models.JSONField("Correo", null=True, blank=True)
+    opcion9 = models.JSONField("Adicional", null=True, blank=True)
 
     class Meta:
         verbose_name = 'Mensaje picky'
