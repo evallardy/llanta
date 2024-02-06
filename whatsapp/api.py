@@ -89,7 +89,7 @@ def mensaje(request):
     # bitacora = Bitacora(descripcion = request.data)
     # bitacora.save()
 
-    bitacora = Bitacora(descripcion = datos['messages'])
+    bitacora = Bitacora(descripcion = datos['entry'][0])
     bitacora.save()
 
 
