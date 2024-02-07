@@ -169,6 +169,7 @@ def mensaje(request):
         # Se envia repuesta 
         # respuesta = {"number":numero,"application":application,"message":message,"type":tipo, "message-out":message,"delay":"0"}
         respuesta = {"number":numero,"message":message, "message-out":message,"delay":"0"}
+        envia_respuesta(respuesta)
         # return Response(respuesta)
         return jsonify({"status": "success"}, 200)
     else:
