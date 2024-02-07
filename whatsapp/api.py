@@ -60,7 +60,7 @@ def registra_asesor(comunicacion):
 
 # api_view(['POST','GET','PULL','PUT','PATCH','DELETE'])
 @api_view(['POST','GET'])
-def mensaje(request):
+def mensaje_whatsapp(request):
     # Guardado de la información que llega tanto el meodo como la información
     bitacora = Bitacora(descripcion = "Entra")
     bitacora.save()
@@ -90,6 +90,7 @@ def mensaje(request):
             opcion_sel = opcion_seleccionada.upper().replace(" ", "")
             nivel = comunicacion.nivel
             pk = comunicacion.id
+            opcion_sel = '3'
             if buscaOpcion(comunicacion, opcion_sel):
                 print(nivel)
                 if opcion_sel == 'R':
