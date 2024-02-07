@@ -169,7 +169,11 @@ def mensaje(request):
         # Se envia repuesta 
         # respuesta = {"number":numero,"application":application,"message":message,"type":tipo, "message-out":message,"delay":"0"}
         respuesta = {"number":numero,"message":message, "message-out":message,"delay":"0"}
+        bitacora = Bitacora(descripcion = respuesta)
+        bitacora.save()
         envia_respuesta(respuesta)
+        bitacora = Bitacora(descripcion = 'Termina OK')
+        bitacora.save()
         # return Response(respuesta)
         return jsonify({"status": "success"}, 200)
     else:
@@ -185,14 +189,32 @@ def mensaje(request):
 #        return Response(respuesta)
                 
 def envia_respuesta(respuesta):
+    bitacora = Bitacora(descripcion = 'Empieza rutina')
+    bitacora.save()
     token = 'EAADwQCYJF8gBO8TwjuO3a7Ft9U3ap8Jorkr2IUKmyYoxHykFF7ZCpSXi4ZATWwbz6jvN7K4ZBJIyY4QcZAjKTxcMSjMKHQgZCl88DyZCZBOlq4Tfwznf6gGZAP605TOo8Ms7CrpOyGEcRFSAr1QfcErHr6MQ7OwW9AYZBzDHBLM8ZBHuoJzbZCBEAztwfXVfwzoi3Tpzx8pZBOR7Ur7MxZCho'
+    bitacora = Bitacora(descripcion = 'Token')
+    bitacora.save()
     idTelefonoWhatsapp = '247680495088544'
+    bitacora = Bitacora(descripcion = 'idtelefono')
+    bitacora.save()
     numeroTelefonoEnviarMensaje = respuesta.numero
+    bitacora = Bitacora(descripcion = 'nuemro a enviar ' + numeroTelefonoEnviarMensaje)
+    bitacora.save()
     mensaje = respuesta.message
+    bitacora = Bitacora(descripcion = 'mensaje ' + mensaje)
+    bitacora.save()
     urlLogo = 'core/img/Logo IAG.png'
+    bitacora = Bitacora(descripcion = 'Logo' )
+    bitacora.save()
     objetoMensaje = Whatsapp(token, idTelefonoWhatsapp)
+    bitacora = Bitacora(descripcion = 'objeto')
+    bitacora.save()
     objetoMensaje.send_message(mensaje, numeroTelefonoEnviarMensaje)
+    bitacora = Bitacora(descripcion = 'envia mensaje')
+    bitacora.save()
     objetoMensaje.send_image(image=urlLogo,recipient_id=numeroTelefonoEnviarMensaje)
+    bitacora = Bitacora(descripcion = 'Envia imagen')
+    bitacora.save()
     return HttpResponse('Mensaje enviado exitosamente')
 
 def generaJson(comunicacion, nivel):
