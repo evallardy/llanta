@@ -62,8 +62,8 @@ def registra_asesor(comunicacion):
 @api_view(['POST','GET'])
 def mensaje(request):
     # Guardado de la información que llega tanto el meodo como la información
-#    bitacora = Bitacora(descripcion = request)
-#    bitacora.save()
+    bitacora = Bitacora(descripcion = "Entra")
+    bitacora.save()
 
     if request.method == 'GET':
         verify_token = request.GET.get('hub.verify_token', None)
