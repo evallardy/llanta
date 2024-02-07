@@ -72,6 +72,10 @@ def mensaje(request):
             return HttpResponse(hub_challenge)
         else:
             return HttpResponse('Error de autenticación')
+
+    bitacora = Bitacora(descripcion = "Entra datos")
+    bitacora.save()
+
     datos=request.data
     numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
     mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
