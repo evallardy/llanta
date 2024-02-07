@@ -183,6 +183,17 @@ def mensaje(request):
 #        respuesta = mensajeError("Sin número")
 #        return Response(respuesta)
                 
+def envia_respuesta(respuesta):
+    token = 'EAADwQCYJF8gBO8TwjuO3a7Ft9U3ap8Jorkr2IUKmyYoxHykFF7ZCpSXi4ZATWwbz6jvN7K4ZBJIyY4QcZAjKTxcMSjMKHQgZCl88DyZCZBOlq4Tfwznf6gGZAP605TOo8Ms7CrpOyGEcRFSAr1QfcErHr6MQ7OwW9AYZBzDHBLM8ZBHuoJzbZCBEAztwfXVfwzoi3Tpzx8pZBOR7Ur7MxZCho'
+    idTelefonoWhatsapp = '247680495088544'
+    numeroTelefonoEnviarMensaje = respuesta.numero
+    mensaje = respuesta.message
+    urlLogo = 'core/img/Logo IAG.png'
+    objetoMensaje = Whatsapp(token, idTelefonoWhatsapp)
+    objetoMensaje.send_message(mensaje, numeroTelefonoEnviarMensaje)
+    objetoMensaje.send_image(image=urlLogo,recipient_id=numeroTelefonoEnviarMensaje)
+    return HttpResponse('Mensaje enviado exitosamente')
+
 def generaJson(comunicacion, nivel):
     opciones = {}
     titulo = ""
