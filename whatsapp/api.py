@@ -174,8 +174,9 @@ def mensaje_whatsapp(request):
         # Se envia repuesta 
         # respuesta = {"number":numero,"application":application,"message":message,"type":tipo, "message-out":message,"delay":"0"}
         bitacora.save()
-        envia_respuesta('Arma mensaje')
+        bitacora = Bitacora(descripcion = 'Arma mensaje')
         respuesta = {"number":numero,"message":message, "message-out":message,"delay":"0"}
+        envia_respuesta(respuesta)
         bitacora = Bitacora(descripcion = respuesta)
         bitacora.save()
         envia_respuesta(respuesta)
