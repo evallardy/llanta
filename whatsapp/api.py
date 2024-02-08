@@ -6,6 +6,7 @@ from django.http import JsonResponse
 import json
 import re
 from decimal import Decimal
+from heyoo import Whatsapp
 
 from .models import MensajePicky, Bitacora
 from inventario.models import Llanta
