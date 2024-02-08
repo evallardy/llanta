@@ -6,9 +6,9 @@ from django.http import JsonResponse
 import json
 import re
 from decimal import Decimal
-from heyoo import Whatsapp
+from heyoo import WhatsApp
 
-from .models import MensajePicky, Bitacora
+from .models import *
 from inventario.models import Llanta
 from venta.views import FormatocotizacionHTMLaPDF
 
@@ -61,7 +61,7 @@ def registra_asesor(comunicacion):
 
 # api_view(['POST','GET','PULL','PUT','PATCH','DELETE'])
 @api_view(['POST','GET'])
-def mensaje_whatsapp(request):
+def mensaje_whatsapps(request):
     # Guardado de la información que llega tanto el meodo como la información
     bitacora = Bitacora(descripcion = "Entra")
     bitacora.save()
