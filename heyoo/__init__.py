@@ -1,5 +1,3 @@
-from whatsapps.models import Bitacora
-
 """
 Unofficial python wrapper for the WhatsApp Cloud API.
 """
@@ -33,10 +31,10 @@ class WhatsApp(object):
         self.token = token
         self.phone_number_id = phone_number_id
 
-        bitacora = Bitacora(descripcion = token )
+        bitacora = whatsapps.models.Bitacora(descripcion = token )
         bitacora.save()
 
-        bitacora = Bitacora(descripcion = phone_number_id )
+        bitacora = whatsapps.models.Bitacora(descripcion = phone_number_id )
         bitacora.save()
 
 
