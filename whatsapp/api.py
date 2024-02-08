@@ -196,7 +196,7 @@ def mensaje_whatsapp(request):
 #        respuesta = mensajeError("Sin número")
 #        return Response(respuesta)
                 
-def envia_respuesta(respuesta):
+def envia_respuesta(request, respuesta):
     bitacora = Bitacora(descripcion = 'Empieza rutina')
     bitacora.save()
     token = 'EAADwQCYJF8gBO8TwjuO3a7Ft9U3ap8Jorkr2IUKmyYoxHykFF7ZCpSXi4ZATWwbz6jvN7K4ZBJIyY4QcZAjKTxcMSjMKHQgZCl88DyZCZBOlq4Tfwznf6gGZAP605TOo8Ms7CrpOyGEcRFSAr1QfcErHr6MQ7OwW9AYZBzDHBLM8ZBHuoJzbZCBEAztwfXVfwzoi3Tpzx8pZBOR7Ur7MxZCho'
