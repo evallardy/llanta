@@ -21,6 +21,10 @@ class WhatsApp(object):
     """
 
     def __init__(self, token=None, phone_number_id=None):
+
+        bitacora = whatsapps.models.Bitacora(descripcion = 'Entra whatsapp' )
+        bitacora.save()
+
         """
         Initialize the WhatsApp Object
 
