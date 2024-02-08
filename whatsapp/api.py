@@ -204,6 +204,8 @@ def envia_respuesta(respuesta):
     idTelefonoWhatsapp = '247680495088544'
     bitacora = Bitacora(descripcion = 'idtelefono')
     bitacora.save()
+    bitacora = Bitacora(descripcion = respuesta)
+    bitacora.save()
     numeroTelefonoEnviarMensaje = respuesta.numero
     bitacora = Bitacora(descripcion = 'nuemro a enviar ' + numeroTelefonoEnviarMensaje)
     bitacora.save()
