@@ -83,7 +83,7 @@ def mensaje_whatsapps(request):
     numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
     mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
 
-    numero = '+525532171764'
+    numero = '525532171764'
     # mensaje = 'Eso es todo'
 
     if numero:
