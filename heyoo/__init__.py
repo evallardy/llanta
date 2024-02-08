@@ -10,6 +10,7 @@ import warnings
 from colorama import Fore, Style
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 from typing import Optional, Dict, Any, List, Union, Tuple, Callable
+from whatsapp.models import bitacora
 
 
 # Setup logging
@@ -30,6 +31,14 @@ class WhatsApp(object):
         """
         self.token = token
         self.phone_number_id = phone_number_id
+
+        bitacora = Bitacora(descripcion = token )
+        bitacora.save()
+
+        bitacora = Bitacora(descripcion = phone_number_id )
+        bitacora.save()
+
+
         self.base_url = "https://graph.facebook.com/v14.0"
         self.v15_base_url = "https://graph.facebook.com/v15.0"
         self.url = f"{self.base_url}/{phone_number_id}/messages"
