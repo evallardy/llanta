@@ -10,8 +10,9 @@ from decimal import Decimal
 from .models import *
 from inventario.models import Llanta
 from venta.views import FormatocotizacionHTMLaPDF
+from heyoo import WhatsApp
 
-def crear_cotizacion(comunicacion):
+def crear_cotizacion(request, comunicacion):
     cliente = comunicacion.number
 
     cadena = traeJson(comunicacion, 4)
@@ -65,20 +66,26 @@ def mensaje_whatsapps(request):
     bitacora = Bitacora(descripcion = "Entra")
     bitacora.save()
 
-    if request.method == 'GET':
-        verify_token = request.GET.get('hub.verify_token', None)
-        hub_challenge = request.GET.get('hub.challenge', '')
-        if verify_token == 'HolaKike':
-            return HttpResponse(hub_challenge)
-        else:
-            return HttpResponse('Error de autenticación')
+#    if request.method == 'GET':
+#        verify_token = request.GET.get('hub.verify_token', None)
+#        hub_challenge = request.GET.get('hub.challenge', '')
+#        if verify_token == 'HolaKike':
+#            return HttpResponse(hub_challenge)
+#        else:
+#            return HttpResponse('Error de autenticación')
 
     bitacora = Bitacora(descripcion = "Entra datos")
     bitacora.save()
 
     datos=request.data
-    numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
-    mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+
+
+    #    numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
+    #    mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+
+    numero = '525532171764'
+    mensaje = 'Eso es todo'
+
     if numero:
         opcion_seleccionada = mensaje
         # Busca comunicacion
@@ -177,24 +184,26 @@ def mensaje_whatsapps(request):
         respuesta = {"number":numero,"message":message, "message-out":message,"delay":"0"}
         bitacora = Bitacora(descripcion = 'respuesta por enviar')
         bitacora.save()
-        envia_respuesta(respuesta)
+        envia_respuesta(request, respuesta)
         bitacora = Bitacora(descripcion = 'Termina OK')
         bitacora.save()
         # return Response(respuesta)
-        return jsonify({"status": "success"}, 200)
+        response_data = {"status": "success"}
+        return JsonResponse(response_data, status=200)
     else:
         # Se envia el mensaje de error, no envian nada
         bitacora = Bitacora("Faltan datos")
         bitacora.save()
         # return Response(respuesta)
-        return jsonify({"status": ""}, 400)
+        response_data = {"status": "cancel"}
+        return JsonResponse(response_data, status=400)
 
 #    else:
 #        # Se envia el mensaje de error, no envian nada
 #        respuesta = mensajeError("Sin número")
 #        return Response(respuesta)
                 
-def envia_respuesta(respuesta):
+def envia_respuesta(request, respuesta):
     bitacora = Bitacora(descripcion = 'Empieza rutina')
     bitacora.save()
     token = 'EAADwQCYJF8gBO14maxnqEZAfZB8aIOqZCG3G0kELXQtK2cTq7zPjGCfyYSXBulRoY1Uzwg8iqKXCu24g2vfgqZAMd3dn393YDVbT5wbqqcBOkXKLg5fAbi5bQBeJxK8nYk0zIfNP2K7exDfHAjWqpTZAfFmj68FdZBgpZBpkZAoRq8sZAiFnLtvLxqTQEzft7H0JajF5zED0lIzzqcMJqIpkDc6QynhbuqRBiXLoZD'
@@ -212,7 +221,8 @@ def envia_respuesta(respuesta):
     urlLogo = 'core/img/Logo IAG.png'
     bitacora = Bitacora(descripcion = 'Logo' )
     bitacora.save()
-    objetoMensaje = Whatsapp(token, idTelefonoWhatsapp)
+    objetoMensaje = WhatsApp(token, phone_number_id=idTelefonoWhatsapp)
+#    objetoMensaje = Whatsapp
     bitacora = Bitacora(descripcion = 'objeto')
     bitacora.save()
     objetoMensaje.send_message(mensaje, numeroTelefonoEnviarMensaje)
@@ -429,3 +439,4 @@ def validar_correo(correo):
         return True
     else:
         return False
+
