@@ -205,10 +205,10 @@ def envia_respuesta(respuesta):
     idTelefonoWhatsapp = '247680495088544'
     bitacora = Bitacora(descripcion = 'idtelefono')
     bitacora.save()
-    numeroTelefonoEnviarMensaje = respuesta.numero
+    numeroTelefonoEnviarMensaje = respuesta['numero']
     bitacora = Bitacora(descripcion = 'nuemro a enviar ' + numeroTelefonoEnviarMensaje)
     bitacora.save()
-    mensaje = respuesta.message
+    mensaje = respuesta['message']
     bitacora = Bitacora(descripcion = 'mensaje ' + mensaje)
     bitacora.save()
     urlLogo = 'core/img/Logo IAG.png'
