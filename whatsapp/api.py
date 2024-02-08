@@ -90,6 +90,7 @@ def mensaje_whatsapp(request):
             opcion_sel = opcion_seleccionada.upper().replace(" ", "")
             nivel = comunicacion.nivel
             pk = comunicacion.id
+            opcion_sel = '1'
             if buscaOpcion(comunicacion, opcion_sel):
                 print(nivel)
                 if opcion_sel == 'R':
