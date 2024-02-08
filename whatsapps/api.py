@@ -66,13 +66,13 @@ def mensaje_whatsapps(request):
     bitacora = Bitacora(descripcion = "Entra")
     bitacora.save()
 
-#    if request.method == 'GET':
-#        verify_token = request.GET.get('hub.verify_token', None)
-#        hub_challenge = request.GET.get('hub.challenge', '')
-#        if verify_token == 'HolaKike':
-#            return HttpResponse(hub_challenge)
-#        else:
-#            return HttpResponse('Error de autenticación')
+    if request.method == 'GET':
+        verify_token = request.GET.get('hub.verify_token', None)
+        hub_challenge = request.GET.get('hub.challenge', '')
+        if verify_token == 'HolaKike':
+            return HttpResponse(hub_challenge)
+        else:
+            return HttpResponse('Error de autenticación')
 
     bitacora = Bitacora(descripcion = "Entra datos")
     bitacora.save()
@@ -80,11 +80,11 @@ def mensaje_whatsapps(request):
     datos=request.data
 
 
-    #    numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
-    #    mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+    numero = datos['entry'][0]['changes'][0]['value']['messages'][0]['from']    
+    mensaje = datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
 
-    numero = '525532171764'
-    mensaje = 'Eso es todo'
+    # numero = '+525532171764'
+    # mensaje = 'Eso es todo'
 
     if numero:
         opcion_seleccionada = mensaje
@@ -221,7 +221,7 @@ def envia_respuesta(request, respuesta):
     urlLogo = 'core/img/Logo IAG.png'
     bitacora = Bitacora(descripcion = 'Logo' )
     bitacora.save()
-    objetoMensaje = WhatsApp(token, phone_number_id=idTelefonoWhatsapp)
+    objetoMensaje = WhatsApp(token, idTelefonoWhatsapp)
 #    objetoMensaje = Whatsapp
     bitacora = Bitacora(descripcion = 'objeto')
     bitacora.save()
