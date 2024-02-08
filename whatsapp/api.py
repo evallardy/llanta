@@ -173,8 +173,8 @@ def mensaje_whatsapp(request):
             comunicacion.save()
         # Se envia repuesta 
         # respuesta = {"number":numero,"application":application,"message":message,"type":tipo, "message-out":message,"delay":"0"}
-        bitacora.save()
         bitacora = Bitacora(descripcion = 'Arma mensaje')
+        bitacora.save()
         respuesta = {"number":numero,"message":message, "message-out":message,"delay":"0"}
         envia_respuesta(respuesta)
         bitacora = Bitacora(descripcion = respuesta)
@@ -204,8 +204,6 @@ def envia_respuesta(respuesta):
     bitacora.save()
     idTelefonoWhatsapp = '247680495088544'
     bitacora = Bitacora(descripcion = 'idtelefono')
-    bitacora.save()
-    bitacora = Bitacora(descripcion = respuesta)
     bitacora.save()
     numeroTelefonoEnviarMensaje = respuesta.numero
     bitacora = Bitacora(descripcion = 'nuemro a enviar ' + numeroTelefonoEnviarMensaje)
