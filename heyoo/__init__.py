@@ -1,3 +1,5 @@
+from whatsapps.models import Bitacora
+
 """
 Unofficial python wrapper for the WhatsApp Cloud API.
 """
@@ -10,7 +12,6 @@ import warnings
 from colorama import Fore, Style
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 from typing import Optional, Dict, Any, List, Union, Tuple, Callable
-from whatsapps.models import Bitacora
 
 
 # Setup logging
