@@ -176,7 +176,7 @@ def mensaje_whatsapps(request):
         bitacora = Bitacora(descripcion = 'Arma mensaje')
         bitacora.save()
         respuesta = {"number":numero,"message":message, "message-out":message,"delay":"0"}
-        bitacora = Bitacora(descripcion = respuesta)
+        bitacora = Bitacora(descripcion = 'respuesta por enviar')
         bitacora.save()
         envia_respuesta(respuesta)
         bitacora = Bitacora(descripcion = 'Termina OK')
