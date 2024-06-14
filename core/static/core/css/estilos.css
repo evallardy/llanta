@@ -352,3 +352,39 @@ input[type="checkbox"]:checked + label:after {
     position: absolute;
     cursor: pointer;
 }
+.pagina-amarilla {
+    background-image: url('/static/core/assets/images/backgrounds/mobile-banner-background.jpg');
+    background-size: cover; /* Cambia a contain o 100% 100% según tus necesidades */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+/*
+.video-flota {
+    float: right;
+    margin-right: 20px;
+    border-radius: 15px;
+    margin-top: 19px;
+}
+.imagen-flota {
+    float: right;
+    margin-right: 500px;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+*/
+/* Ejemplo de media query para ajustar el comportamiento en pantallas más pequeñas */
+@media (max-width: 992px) {
+    .imagen-flota {
+        display: none; /* Oculta el elemento cuando el ancho de la pantalla es de 991px o menos */
+    }
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}

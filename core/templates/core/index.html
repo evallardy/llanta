@@ -1,11 +1,36 @@
 {% extends "core/base.html" %}
 {% load static %}
 {% block contenido %}
-<div class="col-12">
-    <div class="text-center" style="padding: 80px 0 0 0;">
-        <h1>
-            En construcción
-        </h1>
+<div style="padding: 10px;">
+    <div class="col-12 mapa" style="background-color: white; height: 100px;">
+        <img class="img-fluid" src="{% static 'core/assets/images/logo.svg' %}" style="height: 80px; padding-left: 15px;" alt="">
+    </div>
+</div>
+<div style="padding: 0 0 0 20px;">
+    <div class="col-12 mapa pagina-amarilla row">
+        <div class="col-9 row" >
+            <div class="col-1">
+               
+            </div>
+            <div class="col-11">
+                <div class="col-12 d-flex justify-content-center">
+                    <img class="imagen-flota" src="{% static 'core/assets/images/principal-banner/bot.png' %}" style="margin-top: -50px; width: 25%;" alt="">    
+                </div>
+                <div class="col-12" style="margin-top: 30px;">
+                    <div class="col-12">
+                        <label style="color: #00263a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: xx-large;">Tu asistente virtual </label><br>
+                        <label style="color: #00263a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: xx-large; font-weight: normal; margin-left: 50px;">para la venta de llantas. </label>
+                    </div>
+                    <div class="col-12" style="margin-top: 10px; padding: 20px;">
+                        <a class="btn btn-dark" href="">Contratar</a>
+                        <a class="btn btn-light" href="">Conócenos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <video class="mapa col-12" src="{% static 'core/assets/videos/videopromo.mp4' %}" autoplay controls style="margin-top: 10px; margin-bottom: -50px; width: 80%;"></video>
+        </div>
     </div>
 </div>
 {% endblock %}
