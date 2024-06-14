@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{{ titulo }}</title>
+    
+    <meta name="title" content="{{ title }}">
+    <meta name="description" content="{{ descripcion }}">
+    
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ descripcion }}">
+    <meta property="og:url" content="{{ currentURL }}">
+    
+    <link rel="canonical" href="{{ currentURL }}" />
+    
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ descripcion }}">
+    <meta name="twitter:image" content="{%  static 'core/img/assets/images/logo.svg' %}">
+    
+    <!-- FACEBOOK -->
+    <meta property="og:url" content="{{ currentURL }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ descripcion }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{%  static 'core/img/assets/images/logo.svg' %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <link rel="icon" type="image/x-icon" href="{%  static 'core/img/assets/images/favicon32x32.png' %}">
+    
+    <!-- PARA CUALQUIER NAVEGADOR -->
+    <link rel="icon" href="{%  static 'core/img/assets/images/favicon32x32.png' %}" sizes="32x32" type="image/png">
+    
+    <!-- PARA LOS MODELOS MAS RECIENTES DE IPAD Y IPHONE -->
+    <link rel="apple-touch-icon-precomposed" href="{%  static 'core/img/assets/images/favicon152x152.png' %}" type="image/png" sizes="152x152">
+    <link rel="apple-touch-icon-precomposed" href="{%  static 'core/img/assets/images/favicon120x120.png' %}" type="image/png" sizes="120x120">
+    
+    <!-- PARA GOOGLE TV -->
+    <link rel="icon" href="{%  static 'core/img/assets/images/favicon96x96.png' %}" sizes="96x96" type="image/png">
+    
+    <!-- FONTS -->
+    <!-- <link rel="stylesheet" href="{% static '/core/css/fonts.css' %}">  -->
+    
+    <!-- NORMALIZE CSS -->
+<!--    <link rel="stylesheet" href=" static '/core/css/normalize.css' %}">  -->
+    
+    <!-- MAIN CSS -->
+<!--    <link rel="stylesheet" href=" static '/core/css/main.css' %}">  -->
+    
+    <!-- Otros estilos -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/jquery.bxslider.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/jquery-confirm.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/sweetalert2.min.css' %}">
+    <!-- OUR CUSTOMERS CAROUSEL -->
+    <!-- <link rel="stylesheet" href="static 'core/css/plugins/our-customers-carousel/styles.css' %}"> -->
+    <!-- SLICK SLIDER -->
+    <!-- <link rel="stylesheet" href=" static 'core/css/plugins/slick-slider/styles.css' %}">   -->
+
+    
+    <!-- js -->
+    <script src="{% static 'core/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'core/js/funciones.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'core/js/popper.min.js' %}"></script>
+
+    {% block headJS %}
+
+    {% endblock %}
+
+    <!-- Jquery Confirm -->
+    {% block blcss %}
+
+    {% endblock %}
+    <style>
+        .logo-section img {
+          height: 4rem;
+        }
+    </style>
+</head>
+
+<body style="background-color: darkgrey;">
+<header class="d-flex justify-content-center align-items-center fw-bold" style="background-color: black; color: white; height: 3rem;">
+  <p>PARA MAYOR INFORMACIÓN COMUNÍCATE AL:<a style="color: white;" href="tel:{{ PHONE_NUMBER }}">{{ PHONE_NUMBER_FRM }}</a></p>
+</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <img class="navbar-brand d-lg-none" src="{% static 'core/assets/images/logo.svg' %}" style="height: 50px;">
+    <button class="navbar-toggler" style="margin-bottom: 10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nva-item">
+          <a class="{% if index_active %} btn btn-outline-warning active {% else %} btn btn-light {% endif %}" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="{% if paquetes_active %} btn btn-outline-warning active {% else %} btn btn-light {% endif %}" href="#">Paquetes 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="{% if formulario_active %} btn btn-outline-warning active {% else %} btn btn-light {% endif %}" href="#">Formulario</a>
+        </li>
+        <li class="nav-item">
+          <a class="{% if contacto_active %} btn btn-outline-warning active {% else %} btn btn-light {% endif %}" href="#">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="{% if nosotros_active %} btn btn-outline-warning active {% else %} btn btn-light {% endif %}" href="#">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="{% if acceso_active %} btn btn-outline-warning active {% else %} btn btn-light {% endif %}" href="#">Acceso a Clientes</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div>
+{% block contenido %}
+
+{% endblock %}
+</div>
+    <script>
+        {% block bljs %}
+
+        {% endblock %}
+    </script>
+</body>
+
+</html>

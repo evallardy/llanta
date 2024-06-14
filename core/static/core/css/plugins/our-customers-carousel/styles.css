@@ -1,0 +1,58 @@
+.our-customers-carousel {
+  display: flex;
+  background-color: var(--background-color);
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5rem;
+  width: calc(100% - 3rem);
+  margin: 2rem auto 1rem auto;
+  position: relative;
+  min-height: 3rem;
+  padding: 0.5rem;
+}
+
+.our-cutomer-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-cutomer-item>img {
+  width: 80%;
+  object-fit: contain;
+}
+
+.our-customers-carousel .slick-arrow {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  /* height: 2.5rem;
+  width: 2.5rem; */
+  /* background-color: var(--card-color); */
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: var(--small-box-shadow); */
+  transition: 0.2s;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  /* top: 45%; */
+}
+
+.our-customers-carousel .slick-arrow ion-icon {
+  font-size: 2rem;
+  color: var(--secondary-color);
+}
+
+.our-customers-carousel .slick-arrow.back {
+  left: -1.8rem;
+}
+
+.our-customers-carousel .slick-arrow.next {
+  right: -1.8rem;
+}
+
+.our-customers-carousel .slick-arrow.slick-disabled {
+  opacity: 0.5;
+}

@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block headJS %}
+    <title>Resultados</title>
+{% endblock %}
+{% block contenido %}
+        <h1>Catálogo</h1>
+    <h1>Los datos se han cargado exitosamente en la base de datos.</h1>
+    <table>
+        <caption>
+            <h3>Totales</h3>
+        </caption>
+        <thead>
+            <tr>
+                <th style="text-align: center;">Registros OK</th>
+                <th style="text-align: center;">Registros no OK</th>
+                <th style="text-align: center;">Registros totales</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: right;">{{ reg_ok }}</td>
+                <td style="text-align: center;">{{ reg_nok }}</td>
+                <td style="text-align: right;">{{ reg_total }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'importa_archivo' %}">Regresar</a>
+{% endblock %}

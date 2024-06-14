@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block headJS %}
+    <title>Cargar Excel</title>
+{% endblock %}
+{% block contenido %}
+    <h1>Cargar archivo Excel</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cargar</button>
+    </form>
+{% endblock %}

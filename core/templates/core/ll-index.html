@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <?php include 'src/components/head.php'; ?>
+
+  <!-- OUR CUSTOMERS CAROUSEL -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/src/plugins/our-customers-carousel/styles.css">
+</head>
+
+<body class="grid-container">
+  <!-- HEADER -->
+  <?php include 'src/components/header.php'; ?>
+
+  <!-- NAVBAR -->
+  <?php include 'src/components/navbar.php'; ?>
+
+  <!-- MAIN -->
+  <main class="main">
+    <section id="inicio" class="page-section logo-section">
+      <a href="<?= BASE_URL; ?>">
+        <img src="<?= $webpage_images['logo']; ?>" alt="<?= WEBPAGE_NAME; ?>">
+      </a>
+    </section>
+
+    <section id="inicio" class="page-section banner-section">
+      <div class="images">
+        <img class="bot" src="<?= $webpage_images['bot']; ?>" alt="Robot">
+
+        <div class="video-promo">
+          <video src="<?= BASE_URL; ?>/src/assets/videos/videopromo.mp4" autoplay controls style="cursor: pointer;"></video>
+        </div>
+
+        <!-- <div class="phone-tires">
+          <img src="<?= $webpage_images['phone-tires']; ?>" alt="Teléfono y Llantas">
+        </div>
+
+        <img class="desktop-phone-tires" src="<?= $webpage_images['desktop-phone-tires'] ?>" alt="Teléfono y llantas"> -->
+      </div>
+
+      <div class="content">
+        <h1>Tu asistente virtual <span>para la venta de llantas.</span></h1>
+
+        <div class="buttons">
+          <a href="#formulario">
+            Contratar
+          </a>
+
+          <a href="#nosotros">
+            Conócenos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="card-herramientas" class="page-section tools-section">
+      <header>
+        <div>
+          <img src="<?= $webpage_images['medal']; ?>" alt="Medalla">
+        </div>
+
+        <p class="section-description">
+          Contamos con <span>más de 20 herramientas directas</span> que ofrecen flexibilidad y eficiencia en la cominicación y gestión de los usuarios.
+        </p>
+      </header>
+
+      <section>
+        <article>
+          <div class="card-tool">
+            <img src="<?= $webpage_images['tool-recopila-analiza-datos']; ?>" alt="Recopila y analiza datos">
+          </div>
+        </article>
+
+        <article>
+          <div class="card-tool">
+            <img src="<?= $webpage_images['tool-identifica-patrones-tendencias']; ?>" alt="Identifica patrones y tendencias">
+          </div>
+        </article>
+
+        <article>
+          <div class="card-tool">
+            <img src="<?= $webpage_images['tool-ofrece-informes-metricas']; ?>" alt="Ofrece informes y métricas">
+          </div>
+        </article>
+
+        <article>
+          <div class="card-tool">
+            <img src="<?= $webpage_images['tool-automatiza-procesos']; ?>" alt="Automatiza tus procesos">
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <section id="nosotros" class="page-section about-us-section">
+      <h1 class="section-title">Acerca de nosotros</h1>
+
+      <p class="section-description">Plataforma de asistencia virtual y automatización de WhatsApp Business para la venta de llantas.</p>
+      <p class="section-description">ChatBot personalizado para dar respuestar rápidas sobre información de llantas, marcas, tamaños, precios, disponibilidad, en inventario, etc.</p>
+      <p class="section-description">Automatización de tareas y envío masivo de mensajes para una interacción eficiente con los clientes 24/7.</p>
+      <p class="section-description">Integraciones con sistemas de gestión de inventario y CRM para una gestión mas eficiente de pedidos y seguimiento de clientes.</p>
+      <p class="section-description">Mejora la atención al cliente y aumenta las ventas de manera efectiva en el negocio de venta de llantas.</p>
+
+      <img src="<?= $webpage_images['about-us-bot']; ?>" alt="Robot">
+      <img class="desktop" src="<?= $webpage_images['desktop-about-us-bot']; ?>" alt="Robot">
+    </section>
+
+    <section id="formulario" class="page-section hire-us-section">
+      <header>
+        <h1 class="section-title text-center">¿Deseas contratarnos? <span>Completa el formulario</span></h1>
+        <p class="section-description text-center">Si quieres contratar nuestro servicio, por favor completa el siguiente formulario y nos contactaremos a la brevedad.</p>
+      </header>
+
+      <form class="hire-form" autocomplete="off">
+        <div>
+          <div class="input">
+            <label for="nombre_completo">Nombre</label>
+            <input id="nombre_completo" name="nombre_completo" type="text" required>
+          </div>
+        </div>
+
+        <div>
+          <div class="input">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+        </div>
+
+        <div>
+          <div class="input">
+            <label for="numero">Número</label>
+            <input id="numero" name="numero" type="number" required>
+          </div>
+        </div>
+
+        <input name="action" value="hire-form-hire-us" type="hidden">
+
+        <div class="submit">
+          <button type="submit">
+            <img class="loading" src="<?= BASE_URL; ?>/src/assets/images/loading.gif">
+            Enviar
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="page-section how-work-section">
+      <header>
+        <h1 class="section-title text-center">¿Cómo funciona?</h1>
+      </header>
+
+      <article>
+        <ul>
+          <li>
+            <p class="section-description">Ultilización de inteligencia artificial y automatización para interactuar con clientes interesados en comprar llantas.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Respuestas automáticas a preguntas frecuentes y provisión de información detallada sobre productos y precios.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Realización de reservas y envío de recordatorios a través de mensajes de texto.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Capacidad de enviar imágenes, vídeos, audios y documentos para una experiencia más enriquecedora.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Automatización de tareas repetitivas como la gestión de citas y el envío de mensajes programados.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Interrogación con diversas plataformas para brindar una experiencia personalizada y eficiente.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Mejora la atención al cliente y facilitación del proceso de venta de llantas.</p>
+          </li>
+        </ul>
+      </article>
+
+      <aside>
+        <img src="<?= $webpage_images['phone-how-working']; ?>" alt="¿Cómo funciona?">
+      </aside>
+    </section>
+
+    <section class="page-section our-customers-section">
+      <h1 class="section-title text-center">Nuestros clientes</h1>
+      <p class="section-description text-center">Al igual que ellos tu puedes optimizar tus ventas e impulsar tu negocio.</p>
+
+      <div class="our-customers-carousel">
+        <div>
+          <div class="our-cutomer-item">
+            <img src="<?= $webpage_images['carousel-avila'] ?>" alt="Carousel Example">
+          </div>
+        </div>
+
+        <div>
+          <div class="our-cutomer-item">
+            <img src="<?= $webpage_images['carousel-carmotion'] ?>" alt="Carousel Example">
+          </div>
+        </div>
+
+        <div>
+          <div class="our-cutomer-item">
+            <img src="<?= $webpage_images['carousel-llantashop'] ?>" alt="Carousel Example">
+          </div>
+        </div>
+
+        <div>
+          <div class="our-cutomer-item">
+            <img src="<?= $webpage_images['carousel-pelayo-sureste'] ?>" alt="Carousel Example">
+          </div>
+        </div>
+
+        <div>
+          <div class="our-cutomer-item">
+            <img src="<?= $webpage_images['carousel-playo-lomas'] ?>" alt="Carousel Example">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios" class="page-section benefits-section">
+      <h1 class="section-title text-center">Beneficios</h1>
+
+      <article>
+        <section>
+          <ul>
+            <li>
+              <p class="section-description">La combinación del ChatBot con Business Inteligence (Proporciona beneficios significativos).</p>
+            </li>
+
+            <li>
+              <p class="section-description">El BI recopila y analiza datos del ChatBot, generando información valiosa para la toma de desiciones estratégicas.</p>
+            </li>
+
+            <li>
+              <p class="section-description">Permite identificar patrones, tendencias y necesidades del cliente, optimizando la personalización y eficiencia en las marcas.</p>
+            </li>
+
+            <li>
+              <p class="section-description">El BI ofrece informes y métricas detalladas para evaluar el rendimiento del producto y mejorar continuamente su acción comercial.</p>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <ul>
+            <li>
+              <p class="section-description">La combinación del ChatBot y el BI potencia la atención al cliente, impulsa la eficiencia operativa y facilita la toma de desiciones informadas para aumentar las ventas.</p>
+            </li>
+          </ul>
+
+          <img src="<?= $webpage_images['lap-benefits']; ?>" alt="Beneficios">
+        </section>
+      </article>
+    </section>
+
+    <section id="herramientas" class="page-section our-tools-section">
+      <header>
+        <h1 class="section-title text-center">Herramientas</h1>
+      </header>
+
+      <article>
+        <ul>
+          <li>
+            <p class="section-description">Contamos con mas de 20 herramientas directas</p>
+          </li>
+
+          <li>
+            <p class="section-description">Enviar correos electrónicos y Alertas WA.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Integraciones personalizadas por llantera.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Mail WhatsApp.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Pausar respuesta automáticas.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Gestión de prospectos por categorías, subcategorías y etiquetados</p>
+          </li>
+        </ul>
+
+        <ul>
+          <li>
+            <p class="section-description">Acceder al CRM LlantaShop.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Suscribirse o cancelar subscripciones a secuencias de mensajes campañas por goteo.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Agregar o eliminar usuarios de listas de bloqueo.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Enrutamiento y conectores.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Estas opciones ofrecen flexibilidad y eficiencia en la comunicación y gestión de los usuarios.</p>
+          </li>
+        </ul>
+      </article>
+
+      <img src="<?= $webpage_images['lap-tools']; ?>" alt="Laptop Herramientas">
+    </section>
+
+    <section class="page-section db-inventory-section">
+      <header>
+        <h1 class="section-title text-center">Base de datos / Inventarios</h1>
+      </header>
+
+      <article>
+        <ul>
+          <li>
+            <p class="section-description">El sistema se conecta via WAB Web QR.</p>
+          </li>4
+
+          <li>
+            <p class="section-description">La carga de datos de LlantaShop es simple y eficiente.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Los clientes puede agregar su información en el formato deseado, como hojas de cálculo utilizando Sheets de Google.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Existe la opción de una integración adicional con el ERP para actualizar autompáticamente los datos de inventario.</p>
+          </li>
+
+          <li>
+            <p class="section-description">Se brinda flexibilidad a los clientes para elegir el método que mejor se adapte a sus necesidades y preferencias.</p>
+          </li>
+
+          <li>
+            <p class="section-description">No se requiere una integración inicial de información e infraestructura.</p>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="pricing" class="page-section pricing-section">
+      <header class="text-center">
+        <h1 class="section-title">Paquetes</h1>
+        <p class="section-description">En <a href="<?= BASE_URL; ?>"><b><?= WEBPAGE_NAME; ?></b></a> tenemos paquetes que se acomodan a tus necesidades.</p>
+      </header>
+
+      <div>
+        <article class="pricing-item">
+          <header>
+            <div class="pricing-icon">
+              <ion-icon name="paper-plane-outline"></ion-icon>
+            </div>
+
+            <h3 class="pricing-title">Básico</h3>
+
+            <h4 class="pricing-price">$ 847.<sup>00</sup></h4>
+          </header>
+
+          <ul>
+            <li>
+              <p class="section-description">Hasta <span class="danger">250</span> cotizaciones de chat de IA</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">1 chatbot API de WhatsApp</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Chat interactivo</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Hasta <span class="danger">20</span> días de historial de chat</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Administración de inventario</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li class="ic-times">
+              <p class="section-description">Historial de cotizaciones</p>
+
+              <div>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li class="ic-times">
+              <p class="section-description">Generador de PDF de cotización</p>
+
+              <div>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li class="ic-times">
+              <p class="section-description">Envío de PDF de cotización al correo electrónico del cliente</p>
+
+              <div>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li class="ic-times">
+              <p class="section-description">Configurador de opciones de menú</p>
+
+              <div>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Estadísticas generales</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Desactivar bot</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li class="ic-times">
+              <p class="section-description"><span class="danger">0</span> Agentes comerciales</p>
+
+              <div>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">hasta <span class="danger">300</span> Registro de contactos</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+          </ul>
+
+          <footer>
+            <a class="btn btn-primary" target="_blank" href="<?= whatsappPricingLink('Básico', 847); ?>">Solicitar</a>
+          </footer>
+        </article>
+
+        <article class="pricing-item principal">
+          <header>
+            <div class="pricing-icon">
+              <ion-icon name="paper-plane-outline"></ion-icon>
+            </div>
+
+            <h3 class="pricing-title">Medio</h3>
+
+            <h4 class="pricing-price">$ 2,000.<sup>00</sup></h4>
+          </header>
+
+          <ul>
+            <li>
+              <p class="section-description">Hasta <span class="danger">750</span> cotizaciones de chat de IA</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">1 chatbot API de WhatsApp</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Chat interactivo</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Hasta <span class="danger">40</span> días de historial de chat</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Administración de inventario</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Historial de cotizaciones</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Generador de PDF de cotización</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Envío de PDF de cotización al correo electrónico del cliente</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Configurador de opciones de menú</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Estadísticas generales</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Desactivar bot</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Hasta <span class="danger">1</span> Agente comercial</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">hasta <span class="danger">600</span> Registro de contactos</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+          </ul>
+
+          <footer>
+            <a class="btn btn-primary" target="_blank" href="<?= whatsappPricingLink('Medio', 2000); ?>">Solicitar</a>
+          </footer>
+        </article>
+
+        <article class="pricing-item">
+          <header>
+            <div class="pricing-icon">
+              <ion-icon name="paper-plane-outline"></ion-icon>
+            </div>
+
+            <h3 class="pricing-title">Avanzado</h3>
+
+            <h4 class="pricing-price">$ 3,500.<sup>00</sup></h4>
+          </header>
+
+          <ul>
+            <li>
+              <p class="section-description">Hasta <span class="danger">1000</span> cotizaciones de chat de IA</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">1 chatbot API de WhatsApp</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Chat interactivo</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Hasta <span class="danger">60</span> días de historial de chat</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Administración de inventario</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Historial de cotizaciones</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Generador de PDF de cotización</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Envío de PDF de cotización al correo electrónico del cliente</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Configurador de opciones de menú</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Estadísticas generales</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Desactivar bot</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Hasta <span class="danger">2</span> Agentes comerciales</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">hasta <span class="danger">1000</span> Registro de contactos</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+          </ul>
+
+          <footer>
+            <a class="btn btn-primary" target="_blank" href="<?= whatsappPricingLink('Avanzado', 3500); ?>">Solicitar</a>
+          </footer>
+        </article>
+
+        <article class="pricing-item">
+          <header style="margin-bottom: -1.2rem;">
+            <div class="pricing-icon" style="overflow: hidden;">
+              <!-- <ion-icon name="paper-plane-outline"></ion-icon> -->
+              <img src="<?= BASE_URL; ?>/src/assets/images/bot.png" alt="Bot" style="height: 100%;">
+            </div>
+
+            <h3 class="pricing-title"><small>Llantera</small><br>A medida</h3>
+
+            <!-- <h4 class="pricing-price">A medida</h4> -->
+            <p class="section-description"><span>Para llanteras que requieren una mayor personalización.</span></p>
+          </header>
+
+          <ul>
+            <li>
+              <p class="section-description">Número <span class="danger">personalizado</span> cotizaciones de chat de IA</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">1 chatbot API de WhatsApp</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Chat interactivo</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Tiempo <span class="danger">personalizado</span> en historial de chat</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Administración de inventario</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Historial de cotizaciones</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Generador de PDF de cotización</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Envío de PDF de cotización al correo electrónico del cliente</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Configurador de opciones de menú</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Estadísticas generales</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Desactivar bot</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Número <span class="danger">personalizado</span> de Agentes comerciales</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+            <li>
+              <p class="section-description">Número <span class="danger">personalizado</span> de Registro de contactos</p>
+
+              <div>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </li>
+          </ul>
+
+          <footer>
+            <a class="btn btn-primary" target="_blank" href="<?= whatsappPricingLink('A medida', 'Personalizado'); ?>">Solicitar</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto" class="page-section contact-us-section">
+      <header class="text-center">
+        <h1 class="section-title">Contáctanos</h1>
+        <h2 class="section-subtitle">¿Tienes alguna duda?</h2>
+
+        <div class="divider"></div>
+      </header>
+
+      <form class="contact-form" autocomplete="off">
+        <section>
+          <p class="section-description text-center">Llámanos al: <span><a href="tel:<?= PHONE_NUMBER; ?>"><?= formatPhoneNumber(PHONE_NUMBER); ?></a></span><br>o envíanos un correo con tu duda.</p>
+
+          <div class="input">
+            <input name="email" placeholder="Correo electrónico" type="email" required>
+          </div>
+        </section>
+
+        <div class="input textarea">
+          <textarea name="comentarios" placeholder="Comentarios" required rows="3"></textarea>
+
+          <input name="action" value="contact-form-contact-us" type="hidden">
+
+          <button type="submit">
+            <img class="loading" src="<?= BASE_URL; ?>/src/assets/images/loading.gif">
+            Enviar
+          </button>
+        </div>
+
+        <div class="alert-container">
+          <div class="alert"></div>
+        </div>
+      </form>
+    </section>
+
+    <div id="modal-login" class="modal">
+      <div class="modal-content modal-sm">
+        <div class="modal-header">
+          <h2 class="modal-title">Iniciar sesión</h2>
+          <span data-toggle="dismiss" class="close">&times;</span>
+        </div>
+
+        <div class="modal-body">
+          <form id="login-form" method="POST" autocomplete="off">
+            <p class="section-description text-center">Ingresa tus datos de acceso para continuar</p>
+
+            <div class="input">
+              <label for="login-username">Nombre de usuario</label>
+              <input id="login-username" name="username" type="text" required>
+            </div>
+
+            <div class="input">
+              <label for="login-password">Contraseña</label>
+              <input id="login-password" name="password" type="password" required>
+            </div>
+
+            <div class="input">
+              <button class="btn btn-primary btn-w-100 is-loading-lg" type="submit">
+                <img class="loading" src="<?= BASE_URL; ?>/src/assets/images/loading.gif">
+                <span class="text">Iniciar sesión</span>
+              </button>
+            </div>
+
+            <div class="alert-container">
+              <div class="alert"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- WHATSAPP FLOATING ICON -->
+  <a class="whatsapp-floating-icon" target="_blank" href="https://wa.me/<?= PHONE_NUMBER; ?>?text=Quiero información de Llantabot">
+    <ion-icon name="logo-whatsapp"></ion-icon>
+  </a>
+
+  <!-- FOOTER -->
+  <?php include 'src/components/footer.php'; ?>
+
+  <!-- REQUIRED SCRIPTS -->
+  <?php include 'src/components/required-scripts.php'; ?>
+
+  <!-- OUR CUSTOMERS CAROUSEL -->
+  <script src="<?= BASE_URL; ?>/src/plugins/our-customers-carousel/main.js"></script>
+</body>
+
+</html>

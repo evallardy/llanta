@@ -1,0 +1,50 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block contenido %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <hr>
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    {% for key, value in datos.items %}
+                    {% if key != "registros_duplicados" %}
+                    <th>{{ key }}</th>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for key, value in datos.items %}
+                    {% if key != "registros_duplicados" %}
+                    <td>{{ value }}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="text-center">Clave</th>
+                    <th class="text-center">Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registro in datos.registros_duplicados %}
+                <tr>
+                    <td>{{ registro.consec }}</td>
+                    <td>{{ registro.clave }}</td>
+                    <td>{{ registro.descripcion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <input type="submit" value="Ejecuta">
+    </form>
+{% endblock %}
