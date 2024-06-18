@@ -388,3 +388,55 @@ h1 {
     font-weight: bold;
     unicode-bidi: isolate;
 }
+.text-responsive {
+    font-size: 14px; /* 1.5 * 16px = 24px */
+}
+@media (min-width: 576px) {
+    .text-responsive {
+        font-size: 15px; /* 1.75 * 16px = 28px */
+    }
+}
+
+@media (min-width: 768px) {
+    .text-responsive {
+        font-size: 17px; /* 2 * 16px = 32px */
+    }
+}
+
+@media (min-width: 992px) {
+    .text-responsive {
+        font-size: 19px; /* 2.25 * 16px = 36px */
+    }
+}
+
+@media (min-width: 1200px) {
+    .text-responsive {
+        font-size: 20px;
+    }
+}
+.image-responsive {
+    width: 25%;
+}
+@media (min-width: 576px) {
+    .image-responsive {
+        width: 25%;
+    }
+}
+
+@media (min-width: 768px) {
+    .image-responsive {
+        width: 25%;
+    }
+}
+
+@media (min-width: 992px) {
+    .image-responsive {
+        width: 15%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .text-responsive {
+        size: 10%;
+    }
+}

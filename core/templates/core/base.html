@@ -91,7 +91,7 @@
   </style>
 </head>
 
-<body style="background-color: darkgrey;">
+<body style="background-color: darkgrey; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   <header class="d-flex justify-content-center align-items-center fw-bold"
     style="background-color: black; color: white; height: 3rem;">
     <p>PARA MAYOR INFORMACIÓN COMUNÍCATE AL:<a style="color: white;" href="tel:{{ PHONE_NUMBER }}">
@@ -143,6 +143,75 @@
   {% block contenido %}
 
   {% endblock %}
+  <div style="padding: 10px 0 0 20px; margin-bottom: 20px;">
+    <div class="row col-12 mapa" style="padding: 0 0 20px 20px; background-color: white; ">
+      <div class="col-12 row" style="padding: 20px 0 20px 0px;">
+        <div class="col-1">
+
+        </div>
+        <div class="col-1 text-end imagen-flota">
+          <img src="{% static 'core/assets/images/icons/medal.png' %}" alt=""> 
+        </div>
+        <div class="col-7 d-flex align-items-center text-responsive">
+          <label>
+            Contamos con <strong>más de 20 herramientas directas</strong> que ofrecen flexibilidad y eficiencia en la cominicación y gestión de los usuarios.
+          </label>
+        </div>
+        <div class="col-3 imagen-flota">
+
+        </div>
+      </div>
+      <div class="col-12 row d-flex justify-content-around">
+        <img class="image-responsive" src="{% static 'core/assets/images/tools/recopila-analiza-datos.png' %}" alt=""> 
+        <img class="image-responsive" src="{% static 'core/assets/images/tools/identifica-patrones-tendencias.png' %}" alt=""> 
+        <img class="image-responsive" src="{% static 'core/assets/images/tools/ofrece-informes-metricas.png' %}" alt=""> 
+        <img class="image-responsive" src="{% static 'core/assets/images/tools/automatiza-procesos.png' %}" alt=""> 
+      </div>
+    </div>
+    <div class="col-12" style="padding: 10px 0 20px 0;" >
+      <div class="col-12 mapa row" style="background-color: black; color: white;">
+        <div class="col-1">
+        </div> 
+        <div class="col-10 row text-responsive">
+          <div class="row col-12" style="padding: 40px 0 20px 0; border-bottom: 1px solid white;">
+            <div class="col-4 fs-6" style="border-right: 1px solid white; padding: 0 20px 0 30px;">
+              <img src="{% static 'core/assets/images/logo-text-white.svg' %}" alt="">
+              Estamos aquí para revolucionar la forma en que interactúas con tus clientes y gestionas tus ventas
+            </div>
+            <div class="col-4" style="border-right: 1px solid white; padding: 0 20px 0 30px;">
+              <strong class="fs-4">Enlaces</strong>
+              <ul>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="">Nosostros</a></li>
+                <li><a href="">Formulario</a></li>
+                <li><a href="">Beneficios</a></li>
+                <li><a href="">Herramientas</a></li>
+              </ul>
+            </div>
+            <div class="col-4" style="padding: 0 20px 0 30px;">
+              <label class="col-12 fs-6">Suscríbete para recibir nuestras ofertas</label><br>
+              <div class="input-group col-12">
+                <input type="email" class="form-control" id="inputGroupFile02">
+                <label class="input-group-text" for="inputGroupFile02">Suscríbete</label>
+              </div>
+              <label class="col-12 fs-6">Al suscribirte aceptas nuestra <snap style="color: yellow;">Política de privacidad</snap>.</label>
+            </div>
+          </div>
+          <div class="col-12" style="padding: 10px 0 20px 0;">
+            <div class="col-12 text-center">
+              <label for="">Políticas de privacidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Términos y condiciones</label>
+            </div>
+            <div class="col-12 text-center">
+              Copyright 2024 © Llantabot
+            </div>
+          </div>
+        </div>
+        <div class="col-1">
+        </div> 
+      </div>
+    </div>
+  </div>
   <script>
     {% block bljs %}
 
