@@ -440,3 +440,17 @@ h1 {
         size: 10%;
     }
 }
+.politicas-titulo {
+    font-weight: bold;
+    font-size: xx-large;
+    margin: 20px 0 15px 0;
+}
+.politicas-texto-claro {
+    font-size: larger;
+    margin-bottom: 15px;
+}
+.politicas-texto-bold {
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 10px;
+}

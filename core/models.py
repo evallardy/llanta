@@ -208,6 +208,18 @@ class CaracProm(models.Model, PermissionRequiredMixin):
     def __str__(self):
         return '%s' % (self.get_ambito_display, cveProm)
 
+class Suscripcion(models.Model, PermissionRequiredMixin):
+    correo = models.EmailField("Correo suscripción", max_length=255, default='Correo')
+    class Meta:
+        verbose_name = 'Correo'
+        verbose_name_plural = 'Correos' 
+        unique_together= ['correo']
+        ordering = ['correo']
+        db_table = 'Suscripcion'
+
+    def __str__(self):
+        return '%s' % (self.correo)
+
 '''
     # Datos separados
     ancho = models.CharField("Ancho",max_length=10, blank=True, null=True)

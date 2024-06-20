@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import gspread
 from google.auth import credentials
 from google.auth.transport.requests import Request
 from google.oauth2 import service_account
 from django.views import View
+from django.contrib import messages
 
 from .models import *
+from .forms import SuscripcionForm
 
 def format_phone_number(phone_number):
     # Supongamos que el formato deseado es "+52 551-880-7850"
@@ -182,18 +184,43 @@ def leer(request):
     resultado['registros_duplicados'] = registros_duplicados
     return resultado
 
+def empresa():
+    context = {}
+    context['titulo'] = 'Llantabot'
+    context['descripcion'] = 'Tu asistente virtual para la venta de llantas.'
+    context['currentURL'] = 'https://llantabot.com'
+    telefono_cliente = '525518807850'
+    context['PHONE_NUMBER'] = telefono_cliente
+    context['PHONE_NUMBER_FRM'] = format_phone_number(telefono_cliente)
+    return context
+
+
 class Index(View):
     template_name = 'core/index.html'
     def get(self, request, *args, **kwargs):
         context = {}
-        context['titulo'] = 'Llantabot'
-        context['descripcion'] = 'Tu asistente virtual para la venta de llantas.'
-        context['currentURL'] = 'https://llantabot.com'
-        telefono_cliente = '525518807850'
-        context['PHONE_NUMBER'] = telefono_cliente
-        context['PHONE_NUMBER_FRM'] = format_phone_number(telefono_cliente)
         context['index_active'] = True
+        context['empresa'] = empresa()
         return render(request, self.template_name, context)
+
+def politicas(request):
+    context = {}
+    context['empresa'] = empresa()
+    return render(request, 'core/politicas.html', context)
+class Politicas(View):
+    template_name = 'core/politicas.html'
+
+def suscripcion_view(request):
+    if request.method == 'POST':
+        form = SuscripcionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "¡Suscripción realizada con éxito!")
+            return redirect('index')  # Cambia 'success' por la URL de tu página de éxito
+        else:
+            messages.error(request, "")
+            return render(request, 'core/index.html', {'form': form})
+    return redirect('index')
 
 '''
 def index(request):

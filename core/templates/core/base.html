@@ -7,29 +7,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{{ titulo }}</title>
+  <title>{{ empresa.titulo }}</title>
 
-  <meta name="title" content="{{ title }}">
-  <meta name="description" content="{{ descripcion }}">
+  <meta name="title" content="{{ empresa.title }}">
+  <meta name="description" content="{{ empresa.descripcion }}">
 
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ descripcion }}">
-  <meta property="og:url" content="{{ currentURL }}">
+  <meta property="og:title" content="{{ empresa.title }}">
+  <meta property="og:description" content="{{ empresa.descripcion }}">
+  <meta property="og:url" content="{{ empresa.currentURL }}">
 
-  <link rel="canonical" href="{{ currentURL }}" />
+  <link rel="canonical" href="{{ empresa.empresa.currentURL }}" />
 
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
-  <meta name="twitter:title" content="{{ title }}">
-  <meta name="twitter:description" content="{{ descripcion }}">
+  <meta name="twitter:title" content="{{ empresa.title }}">
+  <meta name="twitter:description" content="{{ empresa.descripcion }}">
   <meta name="twitter:image" content="{%  static 'core/img/assets/images/logo.svg' %}">
 
   <!-- FACEBOOK -->
-  <meta property="og:url" content="{{ currentURL }}">
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ descripcion }}">
+  <meta property="og:url" content="{{ empresa.urrentURL }}">
+  <meta property="og:title" content="{{ empresa.title }}">
+  <meta property="og:description" content="{{ empresa.descripcion }}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="{%  static 'core/img/assets/images/logo.svg' %}">
   <meta property="og:image:width" content="1200">
@@ -94,8 +94,8 @@
 <body style="background-color: darkgrey; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   <header class="d-flex justify-content-center align-items-center fw-bold"
     style="background-color: black; color: white; height: 3rem;">
-    <p>PARA MAYOR INFORMACIÓN COMUNÍCATE AL:<a style="color: white;" href="tel:{{ PHONE_NUMBER }}">
-      {{ PHONE_NUMBER_FRM }}</a></p>
+    <p>PARA MAYOR INFORMACIÓN COMUNÍCATE AL:<a style="color: white;" href="tel:{{ empresa.PHONE_NUMBER }}">
+      {{ empresa.PHONE_NUMBER_FRM }}</a></p>
   </header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -192,16 +192,39 @@
             </div>
             <div class="col-4" style="padding: 0 20px 0 30px;">
               <label class="col-12 fs-6">Suscríbete para recibir nuestras ofertas</label><br>
-              <div class="input-group col-12">
-                <input type="email" class="form-control" id="inputGroupFile02">
-                <label class="input-group-text" for="inputGroupFile02">Suscríbete</label>
-              </div>
-              <label class="col-12 fs-6">Al suscribirte aceptas nuestra <snap style="color: yellow;">Política de privacidad</snap>.</label>
+              <form method="POST" action="{% url 'suscripcion_view' %}">  
+                {% csrf_token %}
+                <div class="input-group col-12">
+                  <input type="text" class="form-control" id="id_correo"
+                    name="correo" value="{{ form.correo.value }}">
+                  <button class="input-group-text btn btn-secondary" type="submit" style="font-weight: bold">Suscribirse</button>
+                </div>
+                <div class="">
+                  {% if messages %}
+                  <div class="text-info small mt-2">
+                        {% for message in messages %}
+                        <p class="mb-0">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if form.errors.correo %}
+                  <div class="text-danger small mt-2">
+                      {% for error in form.errors.correo %}
+                          <p class="mb-0">{{ error }}</p>
+                      {% endfor %}
+                  </div>
+                {% endif %}
+                </div>
+              </form>
+              <label class="col-12 fs-6">Al suscribirte aceptas nuestra 
+                <snap style="color: yellow;">
+                  <a href="{% url 'politicas' %}">Política de privacidad</a>
+                </snap>.</label>
             </div>
           </div>
           <div class="col-12" style="padding: 10px 0 20px 0;">
             <div class="col-12 text-center">
-              <label for="">Políticas de privacidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label for=""><a href="{% url 'politicas' %}">Políticas de privacidad</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Términos y condiciones</label>
             </div>
             <div class="col-12 text-center">
