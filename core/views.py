@@ -1,13 +1,134 @@
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 import gspread
 from google.auth import credentials
 from google.auth.transport.requests import Request
 from google.oauth2 import service_account
 from django.views import View
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from .models import *
-from .forms import SuscripcionForm
+from .forms import SuscripcionForm, PromocionForm, DetalleForm, PromocionDetalleForm, LoginForm
+
+def logoutC_view(request):
+    logout(request)
+    return render(request, 'core/index1.html')
+
+class SuperuserLoginRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
+
+class LoginCView(View):
+    form_class = LoginForm
+    template_name = 'registration/loginC.html'
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_superuser:
+                    login(request, user)
+                    return redirect('sistemaC')  # Redirigir a la página de inicio
+                else:
+                    form.add_error(None, 'Solo los superusuarios pueden iniciar sesión.')
+            else:
+                form.add_error(None, 'Nombre de usuario o contraseña incorrectos.')
+        return render(request, self.template_name, {'form': form})
+
+class Sistema(View):
+    template_name = 'core/index1.html'
+    def get(self, request, *args, **kwargs):
+        context = {}
+        return render(request, self.template_name)
+
+# Promocion Views
+class PromocionListView(ListView):
+    model = Promocion
+    template_name = 'core/promocion_list.html'
+
+class PromocionDetailView(DetailView):
+    model = Promocion
+    template_name = 'core/promocion_detail.html'
+
+class PromocionCreateView(CreateView):
+    model = Promocion
+    form_class = PromocionForm
+    template_name = 'core/promocion_form.html'
+    success_url = reverse_lazy('promocion_list')
+
+class PromocionUpdateView(UpdateView):
+    model = Promocion
+    form_class = PromocionForm
+    template_name = 'core/promocion_form.html'
+    success_url = reverse_lazy('promocion_list')
+
+class PromocionDeleteView(DeleteView):
+    model = Promocion
+    template_name = 'core/promocion_confirm_delete.html'
+    success_url = reverse_lazy('promocion_list')
+
+# Detalle Views
+class DetalleListView(ListView):
+    model = Detalle
+    template_name = 'core/detalle_list.html'
+
+class DetalleDetailView(DetailView):
+    model = Detalle
+    template_name = 'core/detalle_detail.html'
+
+class DetalleCreateView(CreateView):
+    model = Detalle
+    form_class = DetalleForm
+    template_name = 'core/detalle_form.html'
+    success_url = reverse_lazy('detalle_list')
+
+class DetalleUpdateView(UpdateView):
+    model = Detalle
+    form_class = DetalleForm
+    template_name = 'core/detalle_form.html'
+    success_url = reverse_lazy('detalle_list')
+
+class DetalleDeleteView(DeleteView):
+    model = Detalle
+    template_name = 'core/detalle_confirm_delete.html'
+    success_url = reverse_lazy('detalle_list')
+
+# PromocionDetalle Views
+class PromocionDetalleListView(ListView):
+    model = PromocionDetalle
+    template_name = 'core/promociondetalle_list.html'
+
+class PromocionDetalleDetailView(DetailView):
+    model = PromocionDetalle
+    template_name = 'core/promociondetalle_detail.html'
+
+class PromocionDetalleCreateView(CreateView):
+    model = PromocionDetalle
+    form_class = PromocionDetalleForm
+    template_name = 'core/promociondetalle_form.html'
+    success_url = reverse_lazy('promociondetalle_list')
+
+class PromocionDetalleUpdateView(UpdateView):
+    model = PromocionDetalle
+    form_class = PromocionDetalleForm
+    template_name = 'core/promociondetalle_form.html'
+    success_url = reverse_lazy('promociondetalle_list')
+
+class PromocionDetalleDeleteView(DeleteView):
+    model = PromocionDetalle
+    template_name = 'core/promociondetalle_confirm_delete.html'
+    success_url = reverse_lazy('promociondetalle_list')
 
 def format_phone_number(phone_number):
     # Supongamos que el formato deseado es "+52 551-880-7850"

@@ -1,0 +1,10 @@
+{% extends 'core/base1.html' %}
+{% block contenido %}
+    <h2>Eliminar Promoción</h2>
+    <p>¿Estás seguro de que quieres eliminar "{{ object }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar</button>
+    </form>
+    <a href="{% url 'promocion_list' %}">Cancelar</a>
+{% endblock %}

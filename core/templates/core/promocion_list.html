@@ -1,0 +1,40 @@
+{% extends "core/base1.html" %}
+{% load static %}
+{% block contenido %}
+<div style="padding: 10px 10px 0 10px;">
+    <div class="container col-6 mapa" style="padding: 10px;">
+        <h2>Lista de Promociones</h2>
+        <div style="padding: 10px;">
+            <a class="btn btn-info" href="{% url 'promocion_create' %}">
+                <img src="{% static 'core/img/agregar.svg' %}" alt="">
+            </a>
+        </div>
+        <table class="table col-12">
+            <thead>
+                <tr>
+                    <th class="col-1">Promoción</th>
+                    <th class="col-1"></th>
+                    <th class="col-1"></th>
+                </tr>
+            </thead>
+            {% for promocion in object_list %}
+            <tbody>
+                <tr>
+                    <td>{{ promocion.titulo }}</td>
+                    <td class="text-center">
+                        <a class="btn btn-info" href="{% url 'promocion_update' promocion.pk %}">
+                            <img src="{% static 'core/img/editar.svg' %}" alt="">
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-danger" href="{% url 'promocion_delete' promocion.pk %}">
+                            <img src="{% static 'core/img/eliminar.svg' %}" alt="">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>    
+{% endblock %}

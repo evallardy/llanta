@@ -1,0 +1,23 @@
+{% extends 'core/base1.html' %}
+{% load static %}
+{% block contenido %}
+<div class="text-center" style="padding: 10px;">
+    <div class="container col-6 mapa">
+        <div style="padding: 10px;">
+            <h2>Eliminar Promocion-Detalle</h2>
+                <h5>
+                    <p style="color: red; font-weight: bold;">¿Estás seguro de que quieres eliminar <br> "{{ object }}"?</p>
+                </h5>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">
+                    <img src="{% static 'core/img/eliminar.svg' %}" alt="">
+                </button>
+                <a class="btn btn-info" href="{% url 'promociondetalle_list' %}">
+                    <img src="{% static 'core/img/regresar.svg' %}" alt="">
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

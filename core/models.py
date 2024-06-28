@@ -16,8 +16,16 @@ CVE_PROMOCION = (
     (4, 'Llevate X y pago Y'),
 )
 ESTATUS_MENSAJE = (
-    (0, 'Terminado'),
-    (1, 'Activo'),
+    ('0', 'Terminado'),
+    ('1', 'Activo'),
+)
+ESTATUS_PAQUETES = (
+    ('0', 'Baja'),
+    ('1', 'Activo'),
+)
+SI_NO = (
+    (0, 'No'),
+    (1, 'Si'),
 )
 TIPO_VALOR = (
     (1, 'Porcentaje'),
@@ -220,11 +228,51 @@ class Suscripcion(models.Model, PermissionRequiredMixin):
     def __str__(self):
         return '%s' % (self.correo)
 
-'''
-    # Datos separados
-    ancho = models.CharField("Ancho",max_length=10, blank=True, null=True)
-    alto = models.CharField("Alto",max_length=10, blank=True, null=True)
-    rin = models.CharField("Rin",max_length=10, blank=True, null=True)
-    radial = models.IntegerField("Radial", default=0)
-    marca = models.CharField("Marca",max_length=100, blank=True, null=True)
-'''
+class Promocion(models.Model, PermissionRequiredMixin):
+    nivel = models.IntegerField("Nivel", default=1)
+    titulo = models.CharField("Título", max_length=30, default='Sin título')
+    descripcion = models.CharField("Descripción", max_length=150, null=True, blank=True)
+    precio = models.DecimalField("Precio", max_digits=8, decimal_places=2, default=0.00)
+    sinPrecio = models.CharField("Texto sin precio", max_length=150, null=True, blank=True)
+    estatus = models.CharField('Estatus', max_length=1, choices=ESTATUS_PAQUETES, default='1')
+
+    class Meta:
+        verbose_name = 'Promoción'
+        verbose_name_plural = 'Promociones'
+        unique_together = ['nivel']
+        ordering = ['nivel']
+        db_table = 'Promocion'
+
+    def __str__(self):
+        return '%s %s' % (self.nivel, self.titulo)
+
+class Detalle(models.Model, PermissionRequiredMixin):
+    descripcion = models.CharField("Descripción", max_length=255)
+
+    class Meta:
+        verbose_name = 'Descripción'
+        verbose_name_plural = 'Descripciones'
+        unique_together = ['descripcion']
+        ordering = ['descripcion']
+        db_table = 'Detalle'
+
+    def __str__(self):
+        return '%s' % (self.descripcion)
+
+class PromocionDetalle(models.Model):
+    promocion = models.ForeignKey(Promocion, on_delete=models.CASCADE)
+    detalle = models.ForeignKey(Detalle, on_delete=models.CASCADE)
+    renglon = models.IntegerField('Renglón', default=0)
+    valorX = models.CharField('Valor XXXX', max_length=20, null=True, blank=True)
+    valorY = models.CharField('Valor YYYY', max_length=20, null=True, blank=True)
+    incluido = models.IntegerField('Incluido', choices=SI_NO, default=1)
+    class Meta:
+        verbose_name = 'Promoción-Detalle'
+        verbose_name_plural = 'Promociones-Detalles'
+        unique_together = [('promocion', 'renglon')]
+        ordering = ['promocion', 'renglon']
+        db_table = 'PromocionDetalle'
+
+    def __str__(self):
+        return '%s - %s /%s/%s/%s' % (self.promocion, self.detalle, self.valorX, self.valorY, self.incluido )
+

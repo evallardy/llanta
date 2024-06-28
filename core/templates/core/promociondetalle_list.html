@@ -1,0 +1,50 @@
+{% extends "core/base1.html" %}
+{% load static %}
+{% block contenido %}
+<div style="padding: 10px 10px 0 10px;">
+    <div class="col-12 mapa" style="padding: 10px;">
+        <h2 class="text-opacity-50">Lista de Promocion-Detalles</h2>
+        <div style="padding: 10px;">
+            <a class="btn btn-info" href="{% url 'promociondetalle_create' %}">
+                <img src="{% static 'core/img/agregar.svg' %}" alt="">
+            </a>
+        </div>
+        <table class="table col-12">
+            <thead>
+                <tr>
+                    <th class="col-1">Promoción</th>
+                    <th class="col-1 text-center">Renglón</th>
+                    <th class="col-5">Característica</th>
+                    <th class="col-1 text-center">Valor XXXX</th>
+                    <th class="col-1 text-center">Valor YYYY</th>
+                    <th class="col-1 text-center">Incluido</th>
+                    <th class="col-1"></th>
+                    <th class="col-1"></th>
+                </tr>
+            </thead>
+            {% for promociondetalle in object_list %}
+            <tbody>
+                <tr>
+                    <td>{{ promociondetalle.promocion }}</td>
+                    <td class="text-center">{{ promociondetalle.renglon }}</td>
+                    <td>{{ promociondetalle.detalle }}</td>
+                    <td class="text-center">{{ promociondetalle.valorX|default_if_none:"" }}</td>
+                    <td class="text-center">{{ promociondetalle.valory|default_if_none:"" }}</td>
+                    <td class="text-center">{{ promociondetalle.get_incluido_display }}</td>
+                    <td class="text-center">
+                        <a class="btn btn-info" href="{% url 'promociondetalle_update' promociondetalle.pk %}">
+                            <img src="{% static 'core/img/editar.svg' %}" alt="">
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-danger" href="{% url 'promociondetalle_delete' promociondetalle.pk %}">
+                            <img src="{% static 'core/img/eliminar.svg' %}" alt="">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

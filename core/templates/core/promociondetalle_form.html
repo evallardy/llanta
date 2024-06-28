@@ -1,0 +1,23 @@
+{% extends 'core/base1.html' %}
+{% load static %}
+{% block contenido %}
+<div class="col-12" style="padding: 10px;">
+    <div class="container mapa col-6">
+        <div style="padding: 10px;">
+            <h2>{{ view.object.pk|yesno:"Editar Promocion-Detalle,Crear Promocion-Detalle" }}</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="col-12 text-center">
+                    <button class="btn btn-success" type="submit">
+                        <img src="{% static 'core/img/guardar.svg' %}" alt="">                    
+                    </button>
+                    <a class="btn btn-info" href="{% url 'promociondetalle_list' %}">
+                        <img src="{% static 'core/img/regresar.svg' %}" alt="">                    
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

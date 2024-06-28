@@ -1,0 +1,8 @@
+{% extends 'core/base1.html' %}
+{% block contenido %}
+    <h2>Detalle de Detalle</h2>
+    <p>Descripción: {{ object.descripcion }}</p>
+    <a href="{% url 'detalle_update' object.pk %}">Editar</a>
+    <a href="{% url 'detalle_delete' object.pk %}">Eliminar</a>
+    <a href="{% url 'detalle_list' %}">Volver a la lista</a>
+{% endblock %}

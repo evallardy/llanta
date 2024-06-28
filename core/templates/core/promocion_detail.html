@@ -1,0 +1,13 @@
+{% extends 'core/base1.html' %}
+{% block contenido %}
+    <h2>Detalle de Promoción</h2>
+    <p>Nivel: {{ object.nivel }}</p>
+    <p>Título: {{ object.titulo }}</p>
+    <p>Descripción: {{ object.descripcion }}</p>
+    <p>Precio: {{ object.precio }}</p>
+    <p>Texto sin precio: {{ object.sinPrecio }}</p>
+    <p>Estatus: {{ object.estatus }}</p>
+    <a href="{% url 'promocion_update' object.pk %}">Editar</a>
+    <a href="{% url 'promocion_delete' object.pk %}">Eliminar</a>
+    <a href="{% url 'promocion_list' %}">Volver a la lista</a>
+{% endblock %}
