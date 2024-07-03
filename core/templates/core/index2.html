@@ -1,0 +1,161 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block contenido %}
+<div style="padding: 10px;">
+    <div class="col-12 mapa" style="background-color: white; height: 100px;">
+        <img class="img-fluid" src="{% static 'core/assets/images/logo.svg' %}" style="height: 80px; padding-left: 15px;" alt="">
+    </div>
+</div>
+<div class="col-12" style="padding: 0 0 0 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div class="col-12">
+        <div class="col-12 row">
+            <div class="col-12 row">
+                {% for dato in datos %}
+                {% if dato.nivel == 1 %}
+                <div class="col-3" style="padding: 0 15px 0 0;">
+                    <div class="col-12 mapa" style="background-color: white;">
+                        <div class="text-center">
+                            <h3>{{ dato.titulo }}<br></h3> 
+                            <div class="fs-5" style="font-weight: bold;">
+                            {% if dato.precio > 0 %}
+                                {{ dato.precio }}
+                            {% else %}
+                                {{ dato.sinPrecio }}
+                            {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                        {% for renglon in dato.renglones %}
+                        <div class="col-12" style="padding-left: 15px;">
+                            <div class="col-12 row">
+                                <div class="col-10">
+                                    {{ renglon.detalle|safe }}
+                                </div>
+                                <div class="col-1 d-flex align-items-center ">
+                                    {% if renglon.incluido == 1 %}
+                                        <div class="col-12 svg-icon-sucess"></div>
+                                    {% else %}
+                                        <div class="col-12 svg-icon-danger"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% for dato in datos %}
+                {% if dato.nivel == 2 %}
+                <div class="col-3" style="padding: 0 15px 0 0;">
+                    <div class="col-12 mapa" style="background-color: white;">
+                        <div class="text-center">
+                            <h3>{{ dato.titulo }}<br></h3> 
+                            <div class="fs-5" style="font-weight: bold;">
+                                {% if dato.precio > 0 %}
+                                    {{ dato.precio }}
+                                {% else %}
+                                    {{ dato.sinPrecio }}
+                                {% endif %}
+                                </div>
+                            </div>
+                        <hr>
+                        {% for renglon in dato.renglones %}
+                        <div class="col-12" style="padding-left: 15px;">
+                            <div class="col-12 row">
+                                <div class="col-10">
+                                    {{ renglon.detalle|safe }}
+                                </div>
+                                <div class="col-1 d-flex align-items-center ">
+                                    {% if renglon.incluido == 1 %}
+                                        <div class="col-12 svg-icon-sucess"></div>
+                                    {% else %}
+                                        <div class="col-12 svg-icon-danger"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% for dato in datos %}
+                {% if dato.nivel == 3 %}
+                <div class="col-3" style="padding: 0 15px 0 0;">
+                    <div class="col-12 mapa" style="background-color: white;">
+                        <div class="text-center">
+                            <h3>{{ dato.titulo }}<br></h3> 
+                            <div class="fs-5" style="font-weight: bold;">
+                                {% if dato.precio > 0 %}
+                                    {{ dato.precio }}
+                                {% else %}
+                                    {{ dato.sinPrecio }}
+                                {% endif %}
+                                </div>
+                            </div>
+                        <hr>
+                        {% for renglon in dato.renglones %}
+                        <div class="col-12" style="padding-left: 15px;">
+                            <div class="col-12 row">
+                                <div class="col-10">
+                                    {{ renglon.detalle|safe }}
+                                </div>
+                                <div class="col-1 d-flex align-items-center ">
+                                    {% if renglon.incluido == 1 %}
+                                        <div class="col-12 svg-icon-sucess"></div>
+                                    {% else %}
+                                        <div class="col-12 svg-icon-danger"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% for dato in datos %}
+                {% if dato.nivel == 4 %}
+                <div class="col-3" style="padding: 0 15px 0 0;">
+                    <div class="col-12 mapa" style="background-color: white;">
+                        <div class="text-center">
+                            <h3>{{ dato.titulo }}<br></h3> 
+                            <div class="fs-5" style="font-weight: bold;">
+                                {% if dato.precio > 0 %}
+                                    {{ dato.precio }}
+                                {% else %}
+                                    {{ dato.sinPrecio }}
+                                {% endif %}
+                                </div>
+                            </div>
+                        <hr>
+                        {% for renglon in dato.renglones %}
+                        <div class="col-12" style="padding-left: 15px;">
+                            <div class="col-12 row">
+                                <div class="col-10">
+                                    {{ renglon.detalle|safe }}
+                                </div>
+                                <div class="col-1 d-flex align-items-center ">
+                                    {% if renglon.incluido == 1 %}
+                                        <div class="col-12 svg-icon-sucess"></div>
+                                    {% else %}
+                                        <div class="col-12 svg-icon-danger"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

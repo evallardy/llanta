@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 import gspread
+from django.http import JsonResponse
 from google.auth import credentials
 from google.auth.transport.requests import Request
 from google.oauth2 import service_account
@@ -323,6 +324,56 @@ class Index(View):
         context['index_active'] = True
         context['empresa'] = empresa()
         return render(request, self.template_name, context)
+
+class Promociones(View):
+    template_name = 'core/index2.html'
+    def get(self, request, *args, **kwargs):
+        context = {}
+        context['paquetes_active'] = True
+        datos = self.genera_promociones()
+        context['datos'] = datos
+        return render(request, self.template_name, context)
+    def genera_promociones(request):
+        # Obtener todos los detalles de las promociones
+        promociones = Promocion.objects.filter(estatus=1)
+
+        data = []
+
+        for promocion in promociones:
+
+            llave = promocion.id
+
+            promocion_data = {
+                "nivel": promocion.nivel,
+                "titulo": promocion.titulo,
+                "descripcion": promocion.descripcion,
+                "precio": promocion.precio,
+                "sinPrecio": promocion.sinPrecio,
+                "renglones": [],
+            }
+
+            promociones_detalles = PromocionDetalle.objects.filter(promocion=llave)
+
+            for detalles in promociones_detalles:
+                detalle = detalles.detalle.descripcion
+                incluido = detalles.incluido
+
+                valorX = detalles.valorX
+                if valorX:
+                    renglon = detalle.replace('XXXX', f'<span style="color:red">{valorX}</span>')
+                else:
+                    renglon = detalle
+
+                renglon_data = {
+                    "detalle": renglon,
+                    "incluido": incluido,
+                }
+
+                promocion_data["renglones"].append(renglon_data)
+
+            data.append(promocion_data)
+
+        return data
 
 def politicas(request):
     context = {}

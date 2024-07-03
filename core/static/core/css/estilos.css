@@ -454,3 +454,19 @@ h1 {
     font-size: x-large;
     margin-bottom: 10px;
 }
+.svg-icon-sucess {
+    width: 14px; /* Ajusta el tamaño según sea necesario */
+    height: 14px; /* Ajusta el tamaño según sea necesario */
+    background-image: url('/static/core/img/check-circle.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(29%) sepia(90%) saturate(453%) hue-rotate(60deg) brightness(95%) contrast(88%);
+}
+.svg-icon-danger {
+    width: 14px; /* Ajusta el tamaño según sea necesario */
+    height: 14px; /* Ajusta el tamaño según sea necesario */
+    background-image: url('/static/core/img/x-circle.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(28%) sepia(98%) saturate(7493%) hue-rotate(359deg) brightness(108%) contrast(107%);
+}

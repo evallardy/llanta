@@ -13,11 +13,12 @@ from .views import politicas, suscripcion_view, \
     DetalleDetailView, DetalleCreateView, DetalleUpdateView, \
     DetalleDeleteView, PromocionDetalleListView, PromocionDetalleDetailView, \
     PromocionDetalleCreateView, PromocionDetalleUpdateView, \
-    PromocionDetalleDeleteView, LoginCView, logoutC_view
+    PromocionDetalleDeleteView, LoginCView, logoutC_view, Promociones
 
 urlpatterns = [
     path('', mensaje_api_view, name = 'mensajes_api_picky'),
     path('politicas/', politicas, name='politicas'),
+    path('promociones/', Promociones.as_view(), name='promociones'),
     path('suscripcion_view/', suscripcion_view, name='suscripcion_view'),
 
     path('loginC/', LoginCView.as_view(), name='loginC'),
